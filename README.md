@@ -56,5 +56,5 @@ This is a passion project built for learning and practical use. I don't stress a
 ---
 
 **Developer:** Kristian "Krisu" Virtanen  
-**License:** [Choose your license]  
+**License:** MIT
 **Node.js** | **MCP Protocol** | **Built with ☕ in Finland**
