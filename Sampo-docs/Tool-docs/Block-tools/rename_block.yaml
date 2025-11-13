@@ -1,0 +1,30 @@
+# TOOL DOCUMENTATION: sampo:rename_block
+tool_description: Rename block (updates markers only, content unchanged). Cannot rename protected blocks.
+params:
+    path:
+        type: string
+        required: true
+        description: File containing the block
+    old_name:
+        type: string
+        required: true
+        description: Current block name
+    new_name:
+        type: string
+        required: true
+        description: New block name
+    backup:
+        type: boolean
+        required: false
+        default: true
+returns:
+    type: object
+    success_codes: ["OK"]
+    error_codes: ["ERROR", "BLOCK_NOT_FOUND", "PROTECTED_BLOCK", "RESERVED_NAME"]
+examples:
+    - "sampo:rename_block({ path: 'utils.js', old_name: 'helper_old', new_name: 'helper_improved' })"
+    - "sampo:rename_block({ path: 'server.js', old_name: 'handler_user_login', new_name: 'handler_authenticate' })"
+notes:
+    - Block content unchanged - only markers renamed
+    - Cannot rename protected system blocks
+    - Backup created by default

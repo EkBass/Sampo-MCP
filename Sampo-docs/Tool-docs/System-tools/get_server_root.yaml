@@ -1,0 +1,7 @@
+# TOOL DOCUMENTATION: sampo:get_server_root
+tool_description: Get absolute path to Sampo-MCP server installation directory.
+returns:
+    type: string
+    structure: Absolute path to server installation
+example:
+    - 'sampo:get_server_root()'

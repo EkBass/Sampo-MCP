@@ -1,0 +1,18 @@
+# TOOL DOCUMENTATION: sampo:search_tools
+tool_description: Search for Sampo-MCP tools by keywords with relevance scoring. Returns ranked results with descriptions, tags, notes, and examples.
+params:
+    query:
+        type: string
+        required: true
+        description: Search query with keywords to find tools
+    limit:
+        type: integer
+        required: false
+        description: (Optional) Maximum results to return (default 5, max 50)
+returns:
+    type: object
+    structure: Query, total results, returned count, ranked results with relevance scores
+examples:
+    - "sampo:search_tools({ query: 'file read write' })"
+    - "sampo:search_tools({ query: 'network ping test' })"
+    - "sampo:search_tools({ query: 'block code edit', limit: 10 })"

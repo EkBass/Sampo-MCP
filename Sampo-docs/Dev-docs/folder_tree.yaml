@@ -1,0 +1,473 @@
+# PROJECT FOLDER TREE
+# Generated: Thursday 06.11.2025 around 22:31
+# Root: D:\Sampo-MCP
+
+folder_tree:
+- folder: "Sampo-MCP"
+  children:
+    - folder: ".vs"
+      children:
+        - folder: "Sampo-MCP"
+          children:
+            - folder: "copilot-chat"
+              children:
+                - folder: "66721b87"
+                  children:
+                    - folder: "sessions"
+            - folder: "CopilotIndices"
+              children:
+                - folder: "17.14.1290.42047"
+            - folder: "FileContentIndex"
+            - folder: "v17"
+        - folder: "Sampo-MCP-source"
+          children:
+            - folder: "CopilotIndices"
+              children:
+                - folder: "17.14.1290.42047"
+            - folder: "FileContentIndex"
+            - folder: "v17"
+    - folder: "node_modules"
+      children:
+        - folder: ".bin"
+        - folder: "@modelcontextprotocol"
+          children:
+            - folder: "sdk"
+              children:
+                - folder: "dist"
+                  children:
+                    - folder: "cjs"
+                      children:
+                        - folder: "client"
+                        - folder: "examples"
+                          children:
+                            - folder: "client"
+                            - folder: "server"
+                            - folder: "shared"
+                        - folder: "server"
+                          children:
+                            - folder: "auth"
+                              children:
+                                - folder: "handlers"
+                                - folder: "middleware"
+                                - folder: "providers"
+                        - folder: "shared"
+                    - folder: "esm"
+                      children:
+                        - folder: "client"
+                        - folder: "examples"
+                          children:
+                            - folder: "client"
+                            - folder: "server"
+                            - folder: "shared"
+                        - folder: "server"
+                          children:
+                            - folder: "auth"
+                              children:
+                                - folder: "handlers"
+                                - folder: "middleware"
+                                - folder: "providers"
+                        - folder: "shared"
+        - folder: "accepts"
+        - folder: "ajv"
+          children:
+            - folder: "dist"
+            - folder: "lib"
+              children:
+                - folder: "compile"
+                - folder: "dot"
+                - folder: "dotjs"
+                - folder: "refs"
+            - folder: "scripts"
+        - folder: "body-parser"
+          children:
+            - folder: "lib"
+              children:
+                - folder: "types"
+        - folder: "bytes"
+        - folder: "call-bind-apply-helpers"
+          children:
+            - folder: ".github"
+            - folder: "test"
+        - folder: "call-bound"
+          children:
+            - folder: ".github"
+            - folder: "test"
+        - folder: "content-disposition"
+        - folder: "content-type"
+        - folder: "cookie"
+        - folder: "cookie-signature"
+        - folder: "cors"
+          children:
+            - folder: "lib"
+        - folder: "cross-spawn"
+          children:
+            - folder: "lib"
+              children:
+                - folder: "util"
+        - folder: "data-uri-to-buffer"
+          children:
+            - folder: "dist"
+            - folder: "src"
+        - folder: "debug"
+          children:
+            - folder: "src"
+        - folder: "depd"
+          children:
+            - folder: "lib"
+              children:
+                - folder: "browser"
+        - folder: "dotenv"
+          children:
+            - folder: "lib"
+        - folder: "dunder-proto"
+          children:
+            - folder: ".github"
+            - folder: "test"
+        - folder: "ee-first"
+        - folder: "encodeurl"
+        - folder: "es-define-property"
+          children:
+            - folder: ".github"
+            - folder: "test"
+        - folder: "es-errors"
+          children:
+            - folder: ".github"
+            - folder: "test"
+        - folder: "es-object-atoms"
+          children:
+            - folder: ".github"
+            - folder: "test"
+        - folder: "escape-html"
+        - folder: "etag"
+        - folder: "eventsource"
+          children:
+            - folder: "dist"
+            - folder: "src"
+        - folder: "eventsource-parser"
+          children:
+            - folder: "dist"
+            - folder: "src"
+        - folder: "express"
+          children:
+            - folder: "lib"
+        - folder: "express-rate-limit"
+          children:
+            - folder: "dist"
+        - folder: "fast-deep-equal"
+          children:
+            - folder: "es6"
+        - folder: "fast-json-stable-stringify"
+          children:
+            - folder: ".github"
+            - folder: "benchmark"
+            - folder: "example"
+            - folder: "test"
+        - folder: "fetch-blob"
+        - folder: "finalhandler"
+        - folder: "formdata-polyfill"
+        - folder: "forwarded"
+        - folder: "fresh"
+        - folder: "function-bind"
+          children:
+            - folder: ".github"
+            - folder: "test"
+        - folder: "get-intrinsic"
+          children:
+            - folder: ".github"
+            - folder: "test"
+        - folder: "get-proto"
+          children:
+            - folder: ".github"
+            - folder: "test"
+        - folder: "gopd"
+          children:
+            - folder: ".github"
+            - folder: "test"
+        - folder: "has-symbols"
+          children:
+            - folder: ".github"
+            - folder: "test"
+              children:
+                - folder: "shams"
+        - folder: "hasown"
+          children:
+            - folder: ".github"
+        - folder: "http-errors"
+          children:
+            - folder: "node_modules"
+              children:
+                - folder: "statuses"
+        - folder: "iconv-lite"
+          children:
+            - folder: ".github"
+            - folder: ".idea"
+              children:
+                - folder: "codeStyles"
+                - folder: "inspectionProfiles"
+            - folder: "encodings"
+              children:
+                - folder: "tables"
+            - folder: "lib"
+        - folder: "inherits"
+        - folder: "ipaddr.js"
+          children:
+            - folder: "lib"
+        - folder: "is-promise"
+        - folder: "isexe"
+          children:
+            - folder: "test"
+        - folder: "json-schema-traverse"
+          children:
+            - folder: "spec"
+              children:
+                - folder: "fixtures"
+        - folder: "math-intrinsics"
+          children:
+            - folder: ".github"
+            - folder: "constants"
+            - folder: "test"
+        - folder: "media-typer"
+        - folder: "merge-descriptors"
+        - folder: "mime-db"
+        - folder: "mime-types"
+        - folder: "ms"
+        - folder: "negotiator"
+          children:
+            - folder: "lib"
+        - folder: "net"
+        - folder: "node-domexception"
+          children:
+            - folder: ".history"
+        - folder: "node-fetch"
+          children:
+            - folder: "@types"
+            - folder: "src"
+              children:
+                - folder: "errors"
+                - folder: "utils"
+        - folder: "object-assign"
+        - folder: "object-inspect"
+          children:
+            - folder: ".github"
+            - folder: "example"
+            - folder: "test"
+              children:
+                - folder: "browser"
+        - folder: "on-finished"
+        - folder: "once"
+        - folder: "os"
+        - folder: "parseurl"
+        - folder: "path-key"
+        - folder: "path-to-regexp"
+          children:
+            - folder: "dist"
+        - folder: "pkce-challenge"
+          children:
+            - folder: "dist"
+        - folder: "proxy-addr"
+        - folder: "punycode"
+        - folder: "qs"
+          children:
+            - folder: ".github"
+            - folder: "dist"
+            - folder: "lib"
+            - folder: "test"
+        - folder: "range-parser"
+        - folder: "raw-body"
+          children:
+            - folder: "node_modules"
+              children:
+                - folder: "iconv-lite"
+                  children:
+                    - folder: "encodings"
+                      children:
+                        - folder: "tables"
+                    - folder: "lib"
+                      children:
+                        - folder: "helpers"
+        - folder: "router"
+          children:
+            - folder: "lib"
+        - folder: "safe-buffer"
+        - folder: "safer-buffer"
+        - folder: "send"
+        - folder: "serve-static"
+        - folder: "setprototypeof"
+          children:
+            - folder: "test"
+        - folder: "shebang-command"
+        - folder: "shebang-regex"
+        - folder: "side-channel"
+          children:
+            - folder: ".github"
+            - folder: "test"
+        - folder: "side-channel-list"
+          children:
+            - folder: ".github"
+            - folder: "test"
+        - folder: "side-channel-map"
+          children:
+            - folder: ".github"
+            - folder: "test"
+        - folder: "side-channel-weakmap"
+          children:
+            - folder: ".github"
+            - folder: "test"
+        - folder: "statuses"
+        - folder: "toidentifier"
+        - folder: "type-is"
+        - folder: "unpipe"
+        - folder: "uri-js"
+          children:
+            - folder: "dist"
+              children:
+                - folder: "es5"
+                - folder: "esnext"
+                  children:
+                    - folder: "schemes"
+        - folder: "vary"
+        - folder: "web-streams-polyfill"
+          children:
+            - folder: "dist"
+              children:
+                - folder: "types"
+                  children:
+                    - folder: "ts3.6"
+            - folder: "es2018"
+            - folder: "es6"
+            - folder: "ponyfill"
+              children:
+                - folder: "es2018"
+                - folder: "es6"
+        - folder: "which"
+          children:
+            - folder: "bin"
+        - folder: "wrappy"
+        - folder: "yaml"
+          children:
+            - folder: "browser"
+              children:
+                - folder: "dist"
+                  children:
+                    - folder: "compose"
+                    - folder: "doc"
+                    - folder: "nodes"
+                    - folder: "parse"
+                    - folder: "schema"
+                      children:
+                        - folder: "common"
+                        - folder: "core"
+                        - folder: "json"
+                        - folder: "yaml-1.1"
+                    - folder: "stringify"
+            - folder: "dist"
+              children:
+                - folder: "compose"
+                - folder: "doc"
+                - folder: "nodes"
+                - folder: "parse"
+                - folder: "schema"
+                  children:
+                    - folder: "common"
+                    - folder: "core"
+                    - folder: "json"
+                    - folder: "yaml-1.1"
+                - folder: "stringify"
+        - folder: "zod"
+          children:
+            - folder: "src"
+              children:
+                - folder: "v3"
+                  children:
+                    - folder: "benchmarks"
+                    - folder: "helpers"
+                    - folder: "locales"
+                    - folder: "tests"
+                - folder: "v4"
+                  children:
+                    - folder: "classic"
+                      children:
+                        - folder: "tests"
+                    - folder: "core"
+                      children:
+                        - folder: "tests"
+                          children:
+                            - folder: "locales"
+                    - folder: "locales"
+                    - folder: "mini"
+                      children:
+                        - folder: "tests"
+                - folder: "v4-mini"
+            - folder: "v3"
+              children:
+                - folder: "helpers"
+                - folder: "locales"
+            - folder: "v4"
+              children:
+                - folder: "classic"
+                - folder: "core"
+                - folder: "locales"
+                - folder: "mini"
+            - folder: "v4-mini"
+        - folder: "zod-to-json-schema"
+          children:
+            - folder: ".github"
+            - folder: "dist"
+              children:
+                - folder: "cjs"
+                  children:
+                    - folder: "parsers"
+                - folder: "esm"
+                  children:
+                    - folder: "parsers"
+                - folder: "types"
+                  children:
+                    - folder: "parsers"
+    - folder: "Sampo-docs"
+      children:
+        - folder: "Block-docs"
+        - folder: "Dev-docs"
+          children:
+            - folder: "Old_stuff"
+        - folder: "json"
+        - folder: "Tool-docs"
+          children:
+            - folder: "Block-tools"
+            - folder: "Environment-tools"
+            - folder: "File-tools"
+            - folder: "Index-tools"
+            - folder: "Network-tools"
+            - folder: "NPM-tools"
+            - folder: "Search-tools"
+            - folder: "System-tools"
+        - folder: "_backups"
+        - folder: "_logs"
+    - folder: "Sampo-GUI"
+    - folder: "Sampo-Workspace"
+      children:
+        - folder: "User-data"
+        - folder: "_trash"
+          children:
+            - folder: "1761837499801_API-tools"
+            - folder: "1762450663045_temp"
+    - folder: "src"
+      children:
+        - folder: ".vs"
+          children:
+            - folder: "src"
+              children:
+                - folder: "copilot-chat"
+                  children:
+                    - folder: "66721b87"
+                      children:
+                        - folder: "sessions"
+                - folder: "CopilotIndices"
+                  children:
+                    - folder: "17.14.1290.42047"
+                - folder: "FileContentIndex"
+                - folder: "v17"
+        - folder: "generators"
+        - folder: "sandbox"
+        - folder: "schemas"
+        - folder: "tool_catalogs"
+        - folder: "tool_implementations"

@@ -1,0 +1,9 @@
+# TOOL DOCUMENTATION: sampo:get_sampo_info
+tool_description: Get Sampo-MCP server version, dependencies, HTTP API config, and metadata.
+returns:
+    type: object
+    structure: Version, name, dependencies, http_api config, package_location, node_version, platform
+example:
+    - 'sampo:get_sampo_info()'
+notes:
+    Use get_sampo_package() for complete package.json content

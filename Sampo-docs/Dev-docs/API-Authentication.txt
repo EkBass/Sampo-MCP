@@ -1,0 +1,173 @@
+# Sampo-MCP API Authentication - Simplified System
+
+## Overview
+Sampo-MCP uses Bearer token authentication with hashed keys stored in `.env` file. The server only validates keys - it never creates, modifies, or manages them. This follows the principle of least privilege.
+
+## How It Works
+
+### 1. Key Storage (.env)
+```env
+# Example entry
+API_KEY_CLAUDE_HASH=54f86f5fea810bb70c3316db9a8e4220aafb4525ee1639ba20cada0dacd15139
+API_KEY_CLAUDE_NAME=Claude AI
+```
+
+- Keys are stored as SHA-256 hashes
+- Each key has two variables: `*_HASH` (the hash) and `*_NAME` (client identifier)
+- Sampo reads these on startup
+
+### 2. Client Authentication
+```
+Authorization: Bearer sk_ai_claude_7k9m2n8p4q6r
+```
+
+- Client sends plain key in HTTP header
+- Sampo hashes incoming key: `sha256(sk_ai_claude_7k9m2n8p4q6r)`
+- Compares hash with stored hashes in memory
+- If match found → access granted, uses `*_NAME` for logging
+
+### 3. Key Generation (External)
+
+**Using helper script:**
+```bash
+node generate_api_key.js sk_ai_claude_7k9m2n8p4q6r
+# Outputs hash ready for .env
+```
+
+**Manual:**
+```bash
+# Node.js
+node -e "console.log(require('crypto').createHash('sha256').update('your_key').digest('hex'))"
+
+# Linux/Mac
+echo -n "your_key" | sha256sum
+
+# Windows PowerShell
+(Get-FileHash -InputStream ([System.IO.MemoryStream]::new([System.Text.Encoding]::UTF8.GetBytes("your_key"))) -Algorithm SHA256).Hash.ToLower()
+```
+
+## Key Management Workflow
+
+### Adding a New Key
+1. Create plain key: `sk_ai_newclient_abc123xyz`
+2. Generate hash: `node generate_api_key.js sk_ai_newclient_abc123xyz`
+3. Add to `.env`:
+   ```env
+   API_KEY_NEWCLIENT_HASH=<generated_hash>
+   API_KEY_NEWCLIENT_NAME=New Client Name
+   ```
+4. Restart Sampo server
+5. Client uses plain key in Authorization header
+
+### Revoking a Key
+1. Comment out or delete hash lines in `.env`
+2. Restart Sampo server
+3. That key will no longer work
+
+### Rotating a Key
+1. Generate new plain key
+2. Generate new hash
+3. Update `.env` with new hash
+4. Restart server
+5. Update client with new plain key
+
+## Security Benefits
+
+✅ **Hash-only storage**: `.env` leak doesn't expose usable keys  
+✅ **One-way function**: Hashes cannot be reversed to get plain keys  
+✅ **Stateless validation**: Sampo only reads, never writes  
+✅ **External management**: Keys managed by trusted admins, not AI  
+✅ **Simple audit**: All keys visible in one `.env` file  
+
+## File Structure
+
+```
+src/
+  api_auth.js          # Core validation logic (reads .env on startup)
+  server.js            # Express middleware (validates requests)
+generate_api_key.js    # Helper script (generates hashes)
+.env.example           # Template with example keys
+.env                   # YOUR keys (not in git)
+```
+
+## Code Flow
+
+```javascript
+// 1. Server startup (api_auth.js)
+const VALID_KEY_HASHES = loadApiKeysFromEnv();
+// Reads all API_KEY_*_HASH from .env into memory
+
+// 2. Request arrives (server.js middleware)
+const authHeader = req.headers.authorization;
+const plainKey = authHeader.replace('Bearer ', '');
+
+// 3. Validation (api_auth.js)
+export function validateApiKey(key) {
+    const keyHash = crypto.createHash('sha256').update(key).digest('hex');
+    const clientInfo = VALID_KEY_HASHES[keyHash];
+    return clientInfo ? { name: clientInfo.name, type: clientInfo.type } : null;
+}
+
+// 4. Result
+// ✅ Match found → req.aiClient = { name: "Claude AI", type: "ai" }
+// ❌ No match → 401 Unauthorized
+```
+
+## What Was Removed
+
+Previously Sampo had a `manage_api_keys` tool that could generate, list, revoke, and activate keys. This was unnecessary complexity because:
+
+- Keys should be managed by admins, not AI
+- Sampo doesn't need write access to keys
+- External tools (text editors, secrets managers) work better
+- In-memory storage was lost on restart anyway
+
+**Deleted files:**
+- `src/tool_implementations/tool_api_keys.js`
+- `src/tool_catalogs/tools_catalog_api.js`
+- `src/schemas/schemas.js` (removed `SchemaManageApiKeys`)
+- `Tool-docs/API-tools/manage_api_keys.yaml`
+
+## Example Keys (From .env.example)
+
+⚠️ **DO NOT USE THESE IN PRODUCTION** - These are example keys with known hashes:
+
+| Plain Key | Hash | Client Name |
+|-----------|------|-------------|
+| `sk_ai_claude_7k9m2n8p4q6r` | `54f86f5f...` | Claude AI |
+| `sk_ai_gemini_3x5c7v9b2n4m` | `f1dda742...` | Gemini AI |
+| `sk_ai_openai_8h4j6k2l9p5q` | `9b21ee39...` | OpenAI |
+| `sk_user_admin_5t7y9u2i4o6p` | `97266f3b...` | Admin-user |
+
+Generate your own unique keys for any real deployment!
+
+## Testing
+
+```bash
+# 1. Create .env from example
+cp .env.example .env
+
+# 2. Start server
+node server.js
+
+# 3. Test with curl
+curl -X POST http://localhost:3000/api/call/get_sampo_info \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer sk_user_admin_5t7y9u2i4o6p" \
+  -d '{}'
+
+# 4. Check logs - should show "Admin-user" as author
+```
+
+## Notes
+
+- Keys are loaded once on startup - restart server after changing `.env`
+- Invalid keys return `401 Unauthorized` with no details (security best practice)
+- Key names from `*_NAME` appear in log entries automatically
+- GUI uses hardcoded key - suitable for local testing only
+- For production: use HTTPS, rotate keys regularly, use secrets manager
+
+---
+
+**Last updated:** October 30, 2025  
+**System:** Sampo-MCP API Authentication v2.0 (Simplified)

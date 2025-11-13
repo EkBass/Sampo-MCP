@@ -1,0 +1,5 @@
+# TOOL DOCUMENTATION: sampo:get_freebasic_version
+tool_description: Detect FreeBASIC compiler version installed on the system
+returns:
+    type: object
+    structure: FreeBASIC compiler version information or error

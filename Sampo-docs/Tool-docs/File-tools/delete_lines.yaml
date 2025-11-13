@@ -1,0 +1,31 @@
+# TOOL DOCUMENTATION: sampo:delete_lines
+tool_description: Delete range of lines from file. Specify start and end (inclusive).
+params:
+    path:
+        type: string
+        required: true
+        description: File to modify
+    start:
+        type: integer
+        required: true
+        description: Starting line (1-indexed, inclusive)
+    end:
+        type: integer
+        required: true
+        description: Ending line (1-indexed, inclusive)
+    backup:
+        type: boolean
+        required: false
+        default: false
+returns:
+    type: object
+    success_codes: ["OK"]
+    error_codes: ["ERROR"]
+examples:
+    - "sampo:delete_lines({ path: 'server.js', start: 42, end: 45 })"
+    - "sampo:delete_lines({ path: 'utils.js', start: 100, end: 125, backup: true })"
+    - "sampo:delete_lines({ path: 'config.js', start: 10, end: 10 })"
+notes:
+    - Line numbers 1-indexed and inclusive
+    - start must be ≤ end
+    - To delete single line, start = end

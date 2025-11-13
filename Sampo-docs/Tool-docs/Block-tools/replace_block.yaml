@@ -1,0 +1,30 @@
+# TOOL DOCUMENTATION: sampo:replace_block
+tool_description: Update block content by name (not line numbers). Survives refactoring, automatic backup.
+params:
+    path:
+        type: string
+        required: true
+        description: File containing the block
+    block:
+        type: string
+        required: true
+        description: Block name to replace
+    content:
+        type: string
+        required: true
+        description: New content (excluding markers)
+    backup:
+        type: boolean
+        required: false
+        default: true
+returns:
+    type: object
+    success_codes: ["OK"]
+    error_codes: ["ERROR", "BLOCK_NOT_FOUND", "READ_ONLY"]
+examples:
+    - "sampo:replace_block({ path: 'server.js', block: 'health_check', content: 'app.get(\"health\", ...' })"
+    - "sampo:replace_block({ path: 'config.js', block: 'database', content: 'const db = {...}', backup: false })"
+notes:
+    - Block-based > line-based, survives code movement
+    - No line counting needed
+    - Automatic backup by default

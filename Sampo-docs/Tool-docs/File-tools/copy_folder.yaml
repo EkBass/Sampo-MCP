@@ -1,0 +1,27 @@
+# TOOL DOCUMENTATION: sampo:copy_folder
+tool_description: Copy folder and all contents to new location (or move if leave_old is false).
+params:
+    from:
+        type: string
+        required: true
+        description: Source folder path
+    to:
+        type: string
+        required: true
+        description: Destination folder path
+    leave_old:
+        type: boolean
+        required: false
+        default: true
+        description: Keep original (true = copy, false = move)
+returns:
+    type: object
+    success_codes: ["OK"]
+    error_codes: ["ERROR"]
+examples:
+    - "sampo:copy_folder({ from: 'Projects/base-template', to: 'Projects/new-project' })"
+    - "sampo:copy_folder({ from: 'temp-data/processing', to: 'archive/2025/processing', leave_old: false })"
+    - "sampo:copy_folder({ from: 'config', to: '_backups/config-2025-10-29' })"
+notes:
+    - Recursively copies all files and subdirectories
+    - Set leave_old as false to move

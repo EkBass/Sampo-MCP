@@ -1,0 +1,7 @@
+# TOOL DOCUMENTATION: sampo:get_sampo_package
+tool_description: Returns Sampo-MCP package.json
+returns:
+    type: object
+    structure: Complete package.json as object
+example:
+    - 'sampo:get_sampo_package()'

@@ -1,0 +1,13 @@
+# TOOL DOCUMENTATION: sampo:export_tools_catalog
+tool_description: Export complete catalog of all Sampo-MCP tools as yaml.
+params: 
+returns:
+    type: object
+    saves_to: Sampo-docs/Dev-docs
+    includes: Names, descriptions, parameters, examples
+examples:
+    - "sampo:export_tools_catalog()"
+notes:
+    - No parameters - exports everything
+    - Auto-generated on server startup
+    - Use read_file to view exported catalog

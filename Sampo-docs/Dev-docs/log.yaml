@@ -1,0 +1,761 @@
+- timestamp: "Monday 27.10.2025 around 16:49"
+  iso_timestamp: "2025-10-29T20:24:40.752Z"
+  author: "claude-ai"
+  content: >
+    Fixed list_tools to detect and show missingManual() warnings from tool catalogs when manual files are missing
+
+- timestamp: "Monday 27.10.2025 around 17:44"
+  iso_timestamp: "2025-10-29T20:24:40.752Z"
+  author: "claude-ai"
+  content: >
+    Refactored list_tools: No args=show catalogs. With catalog=show tools (short/full format). Removed useless descriptions. Schema+impl+catalog updated.
+
+- timestamp: "Monday 27.10.2025 around 17:47"
+  iso_timestamp: "2025-10-29T20:24:40.752Z"
+  author: "claude-ai"
+  content: >
+    Generated refactor report: Dev-docs/list_tools_refactor_report.txt. Contains testing guide, rollback procedure, context for next chat.
+
+- timestamp: "Monday 27.10.2025 around 17:54"
+  iso_timestamp: "2025-10-29T20:24:40.752Z"
+  author: "claude-ai"
+  content: "Fixed list_tools catalog detection: changed \\\\\\\\\\\\\\\\"
+
+- timestamp: "Monday 27.10.2025 around 18:18"
+  iso_timestamp: "2025-10-29T20:24:40.752Z"
+  author: "claude-ai"
+  content: >
+    list_tools refactor WORKS! All 5 tests passed. Bug: param extraction shows \\\\\\\\
+
+- timestamp: "Monday 27.10.2025 around 18:43"
+  iso_timestamp: "2025-10-29T20:24:40.752Z"
+  author: "claude-ai"
+  content: >
+    ✅ FIXED: list_tools param extraction bug. Changed tool.inputSchema to tool.jsonSchema in extractParams(). All 77 tools now show correct parameter names in short format. Tested file/blocks/edit catalogs - all working.
+
+- timestamp: "Monday 27.10.2025 around 18:51"
+  iso_timestamp: "2025-10-29T20:24:40.752Z"
+  author: "claude-ai"
+  content: >
+    Created dynamic GUI (sampo-gui-dynamic.html) that auto-loads all tools via /api/tools/all endpoint, builds UI from schemas automatically. No hardcoded tools needed.
+
+- timestamp: "Monday 27.10.2025 around 18:57"
+  iso_timestamp: "2025-10-29T20:24:40.752Z"
+  author: "Admin-user Krisu"
+  content: >
+    Testing dynamic GUI.\\\\\\\\
+    Seems to work fine
+
+- timestamp: "Monday 27.10.2025 around 19:11"
+  iso_timestamp: "2025-10-29T20:24:40.752Z"
+  author: "claude-ai"
+  content: >
+    Fixed get_paths tool - now returns all paths from _INITS instead of calling non-existent init
+
+- timestamp: "Monday 27.10.2025 around 19:17"
+  iso_timestamp: "2025-10-29T20:24:40.752Z"
+  author: "claude-ai"
+  content: >
+    get_paths now properly implemented - added case in tools_system.js, returns all paths from _INITS
+
+- timestamp: "Monday 27.10.2025 around 19:22"
+  iso_timestamp: "2025-10-29T20:24:40.752Z"
+  author: "claude-ai"
+  content: >
+    Increased add_log_entry max length from 256 to 512 chars - updated implementation, schema, and description
+
+- timestamp: "Monday 27.10.2025 around 19:25"
+  iso_timestamp: "2025-10-29T20:24:40.752Z"
+  author: "claude-ai"
+  content: >
+    Changed log cleanup: now triggers at 200 entries (removes oldest 100) instead of 100 entries (removed 50)
+
+- timestamp: "Monday 27.10.2025 around 19:28"
+  iso_timestamp: "2025-10-29T20:24:40.752Z"
+  author: "claude-ai"
+  content: >
+    Fixed three issues: 1) get_paths tool now works - added proper case implementation in tools_system.js returning all _INITS paths, 2) add_log_entry max length increased from 256 to 512 chars, 3) log cleanup changed from 100 entries (remove 50) to 200 entries (remove 100). All descriptions, schemas and implementations updated accordingly.
+
+- timestamp: "Monday 27.10.2025 around 19:29"
+  iso_timestamp: "2025-10-29T20:24:40.752Z"
+  author: "Admin-user Krisu"
+  content: >
+    Testing add_log_entry because it now should accept up to 512 characters.\\\\\\\\
+    256 was bit small for dev. usage.
+
+- timestamp: "Monday 27.10.2025 around 19:32"
+  iso_timestamp: "2025-10-29T20:24:40.752Z"
+  author: "claude-ai"
+  content: >
+    Fixed get_tool_info parameter parsing - now handles both `paramName` and **paramName** markdown formats
+
+- timestamp: "Monday 27.10.2025 around 19:51"
+  iso_timestamp: "2025-10-29T20:24:40.752Z"
+  author: "claude-ai"
+  content: >
+    Updated renaming_tools.txt manual with real-world issues found in codebase: block comments, catalog examples, and missingManual() calls commonly missed during renames.
+
+- timestamp: "Monday 27.10.2025 around 20:01"
+  iso_timestamp: "2025-10-29T20:24:40.752Z"
+  author: "claude-ai"
+  content: >
+    Reviewed import patterns across all source files. Confirmed all use clean relative imports (../inits.js, ../utils.js). No deep paths found. _MODULES pattern in tools_functions.js mainly used by server.js. Imports are well-organized.
+
+- timestamp: "Monday 27.10.2025 around 20:10"
+  iso_timestamp: "2025-10-29T20:24:40.752Z"
+  author: "claude-ai"
+  content: >
+    Created LAUNCH_SEQUENCE.txt - simplified AI-focused guide covering startup flow from wrapper through server.js, tool_functions.js (_MODULES generation), cleanup.js initialization, tool registration, and ready state. Includes critical constraints and AI checklist.
+
+- timestamp: "Monday 27.10.2025 around 20:12"
+  iso_timestamp: "2025-10-29T20:24:40.752Z"
+  author: "claude-ai"
+  content: >
+    Updated LAUNCH_SEQUENCE.txt - added section on auto-generated maps (BLOCKS_MAP.md/json, file_tree.json, INITS.txt) that regenerate on server startup. Updated AI checklist to include reading these maps.
+
+- timestamp: "Tuesday 28.10.2025 around 22:05"
+  iso_timestamp: "2025-10-29T20:24:40.752Z"
+  author: "claude-ai"
+  content: >
+    Created comprehensive YAML documentation standard for AI. Includes 8 doc types, 2 working examples (replace_block, get_cpu_info), full spec with schemas. ~2.5x info density vs markdown. Ready for implementation.
+
+- timestamp: "Tuesday 28.10.2025 around 22:21"
+  iso_timestamp: "2025-10-29T20:24:40.752Z"
+  author: "claude-ai"
+  content: >
+    YAML standard finalized: doc_standards.yaml (complete spec), doc_standards_quick.yaml (essentials), YAML_STANDARD_README.md (overview). Defines naming (path/name/generated_from), hierarchy (stages/phases/steps), validation rules. Ready for doc conversion.
+
+- timestamp: "Wednesday 29.10.2025 around 16:16"
+  iso_timestamp: "2025-10-29T20:24:40.752Z"
+  author: "claude-ai"
+  content: >
+    Created replace_block.yaml - first tool doc following doc_standards.yaml v1.1. Includes comprehensive cross-references, discovery patterns, and comparison table. Template for remaining 8 Block-tools.
+
+- timestamp: "Wednesday 29.10.2025 around 16:29"
+  iso_timestamp: "2025-10-29T20:24:40.752Z"
+  author: "claude-ai"
+  content: >
+    Converting block tool docs to YAML standard - created read_block, delete_block, duplicate_block, rename_block YAMLs. Remaining: move_block, insert_block, get_block_list, find_blocks
+
+- timestamp: "Wednesday 29.10.2025 around 16:45"
+  iso_timestamp: "2025-10-29T20:24:40.752Z"
+  author: "claude-ai"
+  content: >
+    Converted 8 block tool manuals from MD to YAML: replace_block, delete_block, rename_block, move_block, add_block, get_block_list, search_blocks. Following doc_standards.yaml v1.1. YAML format significantly faster for AI parsing. 2 already done (duplicate_block, read_block).
+
+- timestamp: "Wednesday 29.10.2025 around 17:36"
+  iso_timestamp: "2025-10-29T20:24:40.752Z"
+  author: "claude-ai"
+  content: >
+    Created 10 YAML manuals for File-tools: copy_folder, create_folder, delete_folder, dir, export_folder_tree, export_tools_catalog, get_file_info, get_folder_size, search_files. Completed File-tools YAML documentation set.
+
+- timestamp: "Wednesday 29.10.2025 around 17:47"
+  iso_timestamp: "2025-10-29T20:24:40.752Z"
+  author: "claude-ai"
+  content: >
+    Created YAML manuals for 4 Index-tools: 001_AI_Call_This_Tool_On_First_Connection, list_tools, get_tool_info, generate_blocks_json. All follow doc_standards.yaml v1.1 without cross-refs.
+
+- timestamp: "Wednesday 29.10.2025 around 18:28"
+  iso_timestamp: "2025-10-29T20:24:40.752Z"
+  author: "claude-ai"
+  content: >
+    Created comprehensive YAML manuals for Search-tools category: search_files, search_tools, search_blocks, get_block_list. All manuals follow doc_standards.yaml v1.1 format with structured sections, examples, workflows, and usage guidance.
+
+- timestamp: "Wednesday 29.10.2025 around 19:18"
+  iso_timestamp: "2025-10-29T20:24:40.752Z"
+  author: "claude-ai"
+  content: >
+    Created 20 YAML manuals for System-tools following doc_standards.yaml v1.1 - comprehensive AI-optimized documentation for all system information, monitoring, and control tools
+
+- timestamp: "Wednesday 29.10.2025 around 19:26"
+  iso_timestamp: "2025-10-29T20:24:40.752Z"
+  author: "claude-ai"
+  content: >
+    Generated 11 YAML tool manuals for Version-tools category using consistent template pattern. All tools follow doc_standards.yaml spec with no cross-referencing per request.
+
+- timestamp: "Wednesday 29.10.2025 around 20:49"
+  iso_timestamp: "2025-10-29T20:24:40.752Z"
+  author: "claude-ai"
+  content: >
+    Created AI YAML Standard v2.0 - optimized format with QUICK-GUIDE sections. ~70% reduction in required reading. Converted 5 Index-tools as examples: 001_connection, list_tools, get_tool_info, generate_blocks_json, get_server_root. Docs: AI_YAML_STANDARD.yaml (full spec), AI_YAML_STANDARD_QUICK.yaml (quick ref)
+
+- timestamp: "Wednesday 29.10.2025 around 21:22"
+  iso_timestamp: "2025-10-29T20:24:40.752Z"
+  author: "claude-ai"
+  content: >
+    Updated doc_loader.js to work with YAML format instead of MD. Installed 'yaml' package. QUICK-GUIDE section extracted for minimal loads, full parse for on-demand loads.
+
+- timestamp: "Wednesday 29.10.2025 around 21:26"
+  iso_timestamp: "2025-10-29T20:24:40.752Z"
+  author: "claude-ai"
+  content: >
+    Added env variable support for HTTP config (SAMPO_HTTP_PORT, SAMPO_ENABLE_HTTP). Now multiple server instances can run simultaneously.
+
+- timestamp: "Wednesday 29.10.2025 around 21:26"
+  iso_timestamp: "2025-10-29T20:24:40.752Z"
+  author: "claude-ai"
+  content: >
+    Disabled HTTP API by default in package.json (enableHttp: false). Can be re-enabled via env variable SAMPO_ENABLE_HTTP=true if needed.
+
+- timestamp: "Wednesday 29.10.2025 around 21:29"
+  iso_timestamp: "2025-10-29T20:24:40.752Z"
+  author: "claude-ai"
+  content: >
+    Updated sampo-gui-dynamic.html with note that HTTP API must be enabled. Added helpful error message explaining how to enable HTTP.
+
+- timestamp: "Wednesday 29.10.2025 around 21:32"
+  iso_timestamp: "2025-10-29T20:24:40.752Z"
+  author: "claude-ai"
+  content: >
+    Fixed sampo-gui-dynamic.html - restored missing <style> opening tag that was accidentally removed during earlier edit.
+
+- timestamp: "Wednesday 29.10.2025 around 21:34"
+  iso_timestamp: "2025-10-29T20:24:40.752Z"
+  author: "claude-ai"
+  content: >
+    Fixed YAML parsing in doc_loader.js - made parseYamlDoc more robust with better error handling. Should fix HTTP API /tools/all endpoint hanging.
+
+- timestamp: "Wednesday 29.10.2025 around 21:39"
+  iso_timestamp: "2025-10-29T20:24:40.752Z"
+  author: "claude-ai"
+  content: >
+    Enabled debug logging in doc_loader.js to diagnose HTTP API hanging issue.
+
+- timestamp: "Wednesday 29.10.2025 around 21:55"
+  iso_timestamp: "2025-10-29T20:24:40.752Z"
+  author: "claude-ai"
+  content: >
+    YAML doc migration verified: 82/85 tools (96%). doc_loader.js compatible. Diary-tools (3 files) still .md format. Created YAML_MIGRATION_REPORT.txt
+
+- timestamp: "Wednesday 29.10.2025 around 21:56"
+  iso_timestamp: "2025-10-29T20:24:40.752Z"
+  author: "claude-ai"
+  content: >
+    Confirmed Diary-tools deprecated and removed from Tool-docs. YAML migration now 100% complete (82/82 active tools). All tool manuals successfully migrated to YAML format.
+
+- timestamp: "Wednesday 29.10.2025 around 22:04"
+  iso_timestamp: "2025-10-29T20:24:40.752Z"
+  author: "claude-ai"
+  content: >
+    Added YAML generation to inits.js. System now creates 'init-config.yaml' in Init-docs on startup with all config info. Replaces old TXT format approach.
+
+- timestamp: "Wednesday 29.10.2025 around 22:07"
+  iso_timestamp: "2025-10-29T20:24:40.752Z"
+  author: "claude-ai"
+  content: >
+    Verified: no TXT file generation exists in inits.js. System uses only YAML format now.
+
+- timestamp: "Wednesday 29.10.2025 around 22:12"
+  iso_timestamp: "2025-10-29T20:24:40.752Z"
+  author: "claude-ai"
+  content: >
+    Replaced TXT generator with YAML. Created generate_inits_yaml.js, updated server.js to call it, deleted old generate_inits_txt.js. System now generates only init-config.yaml in Dev-docs.
+
+- timestamp: "Wednesday 29.10.2025 around 22:18"
+  iso_timestamp: "2025-10-29T20:24:40.752Z"
+  author: "claude-ai"
+  content: >
+    Converted file_mapper.js to YAML format. Created file_map_generator.js in generators folder, updated server.js to generate file_tree.yaml instead of JSON, deleted old file_mapper.js.
+
+- timestamp: "Wednesday 29.10.2025 around 22:23"
+  iso_timestamp: "2025-10-29T20:24:40.752Z"
+  author: "claude-ai"
+  content: >
+    Converted log system from TXT to YAML format. Updated add_log_entry tool in tools_system.js to write log.yaml. Created migrate_log_to_yaml.js to convert existing log.txt. Server now migrates log on startup.
+
+- timestamp: "Wednesday 29.10.2025 around 22:30"
+  iso_timestamp: "2025-10-29T20:30:40.739Z"
+  author: "claude-ai"
+  content: >
+    Cleaned up migration code. Removed migrate_log_to_yaml.js and its import/call from server.js. Migration complete, log.yaml is now the standard.
+
+- timestamp: "Wednesday 29.10.2025 around 22:34"
+  iso_timestamp: "2025-10-29T20:34:01.423Z"
+  author: "claude-ai"
+  content: >
+    Created AI-optimized YAML documentation standard: TOOL_GUIDE_AI_STANDARD.yaml + README. Converts narrative docs to structured, machine-readable workflows with decision trees and validation gates.
+
+- timestamp: "Wednesday 29.10.2025 around 22:42"
+  iso_timestamp: "2025-10-29T20:42:09.825Z"
+  author: "claude-ai"
+  content: >
+    Created BLOCK_SYSTEM_AI_STANDARD.yaml (704 lines): Complete AI-optimized spec for block operations with dual syntax support, protection rules, validation logic, anti-patterns, and operation matrix.
+
+- timestamp: "Wednesday 29.10.2025 around 22:43"
+  iso_timestamp: "2025-10-29T20:43:45.223Z"
+  author: "claude-ai"
+  content: >
+    Created AI_YAML_STANDARDS_INDEX.md (512 lines): Complete master index and guide for AI-optimized YAML documentation system. Explains philosophy, structure, usage for AI/humans, examples, and roadmap.
+
+- timestamp: "Wednesday 29.10.2025 around 22:51"
+  iso_timestamp: "2025-10-29T20:51:58.267Z"
+  author: "claude-ai"
+  content: >
+    Updated generate_blocks_map.js to output YAML instead of Markdown. Now generates BLOCKS_MAP.yaml matching the format of init-config.yaml and file_tree.yaml.
+
+- timestamp: "Wednesday 29.10.2025 around 23:15"
+  iso_timestamp: "2025-10-29T21:15:00.727Z"
+  author: "claude-ai"
+  content: >
+    Designed AI connection handshake system. Clear flow: Init → Call orientation tool → Resources → Work. Entry point: sampo:001_AI_Call_This_Tool_On_First_Connection. Resources split: sampo:// (dynamic paths) vs file:/// (docs). Plan saved in AI_HANDSHAKE_PLAN.txt
+
+- timestamp: "Wednesday 29.10.2025 around 23:42"
+  iso_timestamp: "2025-10-29T21:42:50.550Z"
+  author: "claude-ai"
+  content: >
+    Simplified AI handshake. Tool returns paths only - AI decides what to read. Updated: 001_AI_Call_This_Tool_On_First_Connection.yaml (cleaner doc), usage_guidelines_impl() (simpler response), InitializeRequestSchema (prominent instruction box). Philosophy: Give paths, not content. Let AI be autonomous.
+
+- timestamp: "Thursday 30.10.2025 around 10:06"
+  iso_timestamp: "2025-10-30T08:06:03.195Z"
+  author: "claude-ai"
+  content: >
+    Fixed critical JavaScript syntax error in sampo-gui-dynamic.html - try/catch blocks were incorrectly structured, causing fetch to fail. Added missing allTools assignment and proper error handling.
+
+- timestamp: "Thursday 30.10.2025 around 12:16"
+  iso_timestamp: "2025-10-30T10:16:20.608Z"
+  author: "claude-ai"
+  content: >
+    CRITICAL FIX: HTTP server was never starting because stdio transport connection blocked async execution. Moved HTTP server startup BEFORE stdio.connect() and wrapped listen() in Promise to ensure it completes before stdio takes over.
+
+- timestamp: "Thursday 30.10.2025 around 12:22"
+  iso_timestamp: "2025-10-30T10:22:31.040Z"
+  author: "claude-ai"
+  content: >
+    Fixed escaped quotes in GUI HTML that broke all element IDs and event handlers. Classic refactoring cascade bug!
+
+- timestamp: "Thursday 30.10.2025 around 13:00"
+  iso_timestamp: "2025-10-30T11:00:35.809Z"
+  author: "claude-ai"
+  content: >
+    Fixed list_tools: removed 'format' param, now returns catalog list without args, or QUICK-GUIDE sections from yaml docs when catalog specified. Simplified from short/full to single behavior.
+
+- timestamp: "Thursday 30.10.2025 around 13:26"
+  iso_timestamp: "2025-10-30T11:26:34.296Z"
+  author: "claude-ai"
+  content: >
+    Cleaned up list_tools and get_tool_info: removed counts/total from catalog list, removed tags from responses, get_tool_info now always returns full yaml doc. No more format params.
+
+- timestamp: "Thursday 30.10.2025 around 14:28"
+  iso_timestamp: "2025-10-30T12:28:26.272Z"
+  author: "Admin-user Krisu"
+  content: >
+    I edited the document 'Sampo-docs\\\\\\\\Tool-docs\\\\\\\\Index-tools\\\\\\\\001_AI_Call_This_Tool_On_First_Connection.yaml' so that it guides you on how to use the \\\\\\\\
+
+- timestamp: "Thursday 30.10.2025 around 15:09"
+  iso_timestamp: "2025-10-30T13:09:34.294Z"
+  author: "claude-ai"
+  content: >
+    OAuth-style API authentication implemented. Auto-detects client name from API key (HTTP) or MCP client info (stdio).
+
+- timestamp: "Thursday 30.10.2025 around 15:16"
+  iso_timestamp: "2025-10-30T13:16:38.855Z"
+  author: "Admin-user (Krisu)"
+  content: "Testing auth with GUI"
+
+- timestamp: "Thursday 30.10.2025 around 17:25"
+  iso_timestamp: "2025-10-30T15:25:33.268Z"
+  author: "claude-ai"
+  content: >
+    Simplified API auth: removed key management tool (manage_api_keys), deleted obsolete files (tool_api_keys.js, tools_catalog_api.js, SchemaManageApiKeys). Keys now managed externally via .env file with SHA-256 hashes. Sampo is read-only validator. Added generate_api_key.js helper script.
+
+- timestamp: "Thursday 30.10.2025 around 17:33"
+  iso_timestamp: "2025-10-30T15:33:26.776Z"
+  author: "claude-ai"
+  content: >
+    ✅ OAuth-style API auth complete: Created .env from .env.example with hashed keys. System validates Bearer tokens via SHA-256 comparison. Auth middleware active on /api routes.
+
+- timestamp: "Thursday 30.10.2025 around 18:06"
+  iso_timestamp: "2025-10-30T16:06:54.634Z"
+  author: "claude-ai"
+  content: >
+    Fixed GUI auth: Updated sampo-gui-dynamic.html line 475 to use correct API key sk_Sampo-MCP_Krisu instead of old sk_user_admin_5t7y9u2i4o6p
+
+- timestamp: "Thursday 30.10.2025 around 18:08"
+  iso_timestamp: "2025-10-30T16:08:58.017Z"
+  author: "Admin-Krisu"
+  content: >
+    Using and testing oAuth system which should know who I am just by the key. Next step is to make Sampo work via internet. Not hurry tho.
+
+- timestamp: "Thursday 30.10.2025 around 19:20"
+  iso_timestamp: "2025-10-30T17:20:30.612Z"
+  author: "claude-ai"
+  content: >
+    Created comprehensive restructure roadmap. Key finding: Only 1 code change needed in inits.js (sampoDocsPath location). All other files use _INITS properly. Ready for temp testing phase.
+
+- timestamp: "Thursday 30.10.2025 around 20:08"
+  iso_timestamp: "2025-10-30T18:08:44.296Z"
+  author: "claude-ai"
+  content: >
+    Fixed read_file and get_file_info to use validateWorkspacePath. Now respects devMode for Sampo-docs access.
+
+- timestamp: "Thursday 30.10.2025 around 20:08"
+  iso_timestamp: "2025-10-30T18:08:51.478Z"
+  author: "claude-ai"
+  content: >
+    Fixed write_file to check isReadOnly before creating new files. Now properly blocks writes to Sampo-docs in production.
+
+- timestamp: "Thursday 30.10.2025 around 20:46"
+  iso_timestamp: "2025-10-30T18:46:13.932Z"
+  author: "claude-ai"
+  content: >
+    Fixed usage_guidelines_impl to load critical_rules from YAML instead of hardcoding. Now returns all 5 rules + quick_tips from 001_AI_Call_This_Tool_On_First_Connection.yaml
+
+- timestamp: "Saturday 01.11.2025 around 18:41"
+  iso_timestamp: "2025-11-01T16:41:23.739Z"
+  author: "claude-ai"
+  content: >
+    Fixed import system - created file_paths.js for path-based imports. Updated tools_register.js to use _MODULES.* pattern instead of direct paths. Enhanced file_map_generator.js to auto-generate file_paths.js with generatePaths option.
+
+- timestamp: "Saturday 01.11.2025 around 18:48"
+  iso_timestamp: "2025-11-01T16:48:55.584Z"
+  author: "claude-ai"
+  content: >
+    Refined path system: file_paths.js now exports individual constants (LOGGER, SCHEMAS, etc.) for static imports, plus _PATHS object for dynamic lookups. When files move, update only file_paths.js - all imports remain valid.
+
+- timestamp: "Saturday 01.11.2025 around 18:50"
+  iso_timestamp: "2025-11-01T16:50:46.772Z"
+  author: "claude-ai"
+  content: >
+    file_map_generator now runs on every server startup - auto-generates file_tree.yaml and file_paths.js. Path mappings stay current automatically.
+
+- timestamp: "Saturday 01.11.2025 around 18:55"
+  iso_timestamp: "2025-11-01T16:55:59.270Z"
+  author: "claude-ai"
+  content: >
+    Eliminated circular dependency! Removed tools_functions.js. All imports now use file_paths.js directly - tools_register.js imports tool implementations directly, server.js imports via path constants. No more circular dependencies.
+
+- timestamp: "Saturday 01.11.2025 around 19:41"
+  iso_timestamp: "2025-11-01T17:41:34.099Z"
+  author: "claude-ai"
+  content: >
+    Updated restart-wrapper.js: Now generates file_paths.js before starting server. Added generateFilePaths() function that runs file_map_generator.js synchronously. This ensures path constants are available before any imports.
+
+- timestamp: "Saturday 01.11.2025 around 19:48"
+  iso_timestamp: "2025-11-01T17:48:06.080Z"
+  author: "claude-ai"
+  content: >
+    Created file_paths_guide.txt in Dev-docs. Practical implementation guide for centralized path management system. Covers usage methods, benefits, migration strategy, and troubleshooting.
+
+- timestamp: "Saturday 01.11.2025 around 19:53"
+  iso_timestamp: "2025-11-01T17:53:21.642Z"
+  author: "claude-ai"
+  content: >
+    Verified import patterns across Sampo source. Files are NOT using file_paths.js system. All 40+ .js files still use relative imports (../inits.js, ./utils.js, etc.) instead of centralized imports via file_paths.js constants.
+
+- timestamp: "Saturday 01.11.2025 around 21:02"
+  iso_timestamp: "2025-11-01T19:02:02.099Z"
+  author: "claude-ai"
+  content: >
+    Migrated all import statements to use centralized file_paths.js pattern. Fixed: cleanup.js, all tool_catalogs (9 files), docs_generator.js, generate_blocks_map.js, generate_inits_yaml.js. Core files (server.js, utils.js, inits.js, tools_register.js) and tool_implementations (8 files) were already migrated.
+
+- timestamp: "Saturday 01.11.2025 around 21:08"
+  iso_timestamp: "2025-11-01T19:08:52.793Z"
+  author: "claude-ai"
+  content: >
+    Fixed syntax error in server.js: ES6 import statements require string literals, not variables. Replaced variable-based imports (from INITS, LOGGER, etc.) with direct path strings. Same issue exists in other files using file_paths.js constants.
+
+- timestamp: "Saturday 01.11.2025 around 21:31"
+  iso_timestamp: "2025-11-01T19:31:37.026Z"
+  author: "claude-ai"
+  content: >
+    Fixed all import statements across tool implementation files (tools_system, tools_versions, tools_network, tools_npm). Replaced file_paths.js constant usage with direct string paths. ES6 imports require string literals, not variables.
+
+- timestamp: "Saturday 01.11.2025 around 21:36"
+  iso_timestamp: "2025-11-01T19:36:40.283Z"
+  author: "claude-ai"
+  content: >
+    Disabled file_paths.js generation in server.js and file_map_generator.js (generatePaths: false). The centralized path constants approach doesn't work with ES6 static imports.
+
+- timestamp: "Saturday 01.11.2025 around 21:50"
+  iso_timestamp: "2025-11-01T19:50:29.495Z"
+  author: "claude-ai"
+  content: >
+    Fixed MCP startup error: file_map_generator now outputs to stderr instead of stdout to avoid polluting JSON stream
+
+- timestamp: "Sunday 02.11.2025 around 11:01"
+  iso_timestamp: "2025-11-02T09:01:11.870Z"
+  author: "claude-ai"
+  content: >
+    Fixed add_log_entry: Now properly escapes quotes and backslashes in both single-line and multiline log entries
+
+- timestamp: "Sunday 02.11.2025 around 11:04"
+  iso_timestamp: "2025-11-02T09:04:40.434Z"
+  author: "claude-ai"
+  content: >
+    Fixed add_log_entry properly: Block scalars (|-) don't need escaping, only quoted strings do
+
+- timestamp: "Sunday 02.11.2025 around 11:09"
+  iso_timestamp: "2025-11-02T09:09:54.047Z"
+  author: "claude-ai"
+  content: >
+    Fixed add_log_entry to use quoted strings with \
+     escapes instead of block scalars. Cleaner, more parseable format.
+
+- timestamp: "Sunday 02.11.2025 around 11:10"
+  iso_timestamp: "2025-11-02T09:10:50.181Z"
+  author: "Admin-Krisu"
+  content: "This is multiline entry test.."
+
+- timestamp: "Sunday 02.11.2025 around 11:12"
+  iso_timestamp: "2025-11-02T09:12:05.023Z"
+  author: "Admin-Krisu"
+  content: >
+    "add_log_entry" with multilines and quots works as expected.
+
+- timestamp: "Sunday 02.11.2025 around 11:47"
+  iso_timestamp: "2025-11-02T09:47:29.845Z"
+  author: "claude-ai"
+  content: >
+    CRITICAL SECURITY FIX: validateWorkspacePath() in devMode was allowing unrestricted filesystem access. Now properly validates paths are within workspace/projectRoot/docs boundaries even in dev mode. Bug reported by Krisu.
+
+- timestamp: "Sunday 02.11.2025 around 11:48"
+  iso_timestamp: "2025-11-02T09:48:32.165Z"
+  author: "claude-ai"
+  content: >
+    User (Krisu) discovered and reported critical security bug in validateWorkspacePath(). When devMode:true, function allowed unrestricted filesystem access without any boundary checks. Fixed by adding proper validation even in dev mode.
+
+- timestamp: "Sunday 02.11.2025 around 11:50"
+  iso_timestamp: "2025-11-02T09:50:15.768Z"
+  author: "Admin-Krisu"
+  content: >
+    Tested to write file as: D:\test\temp.txt
+    Caused error as expected.
+
+- timestamp: "Sunday 02.11.2025 around 13:37"
+  iso_timestamp: "2025-11-02T11:37:40.038Z"
+  author: "claude-ai"
+  content: >
+    AI analysis of Sampo-MCP structure for optimization. Creating AI-oriented YAML documentation.
+
+- timestamp: "Sunday 02.11.2025 around 13:40"
+  iso_timestamp: "2025-11-02T11:40:09.972Z"
+  author: "claude-ai"
+  content: >
+    Created 3 AI-optimized structure docs: full YAML (6.7KB), quick ref (1.4KB), text summary (2KB)
+
+- timestamp: "Sunday 02.11.2025 around 14:22"
+  iso_timestamp: "2025-11-02T12:22:14.006Z"
+  author: "claude-ai"
+  content: >
+    Fixed duplication issue in usage_guidelines_impl() - now properly merges YAML content with runtime paths, avoiding token waste. Checks for data wrapper structure to prevent duplicate workspace_paths and key_documents sections.
+
+- timestamp: "Monday 03.11.2025 around 20:08"
+  iso_timestamp: "2025-11-03T18:08:02.187Z"
+  author: "claude-ai"
+  content: >
+    Created comprehensive plan for merging edit_tools into file_tools. Plan includes 5 phases: preparation, code consolidation, catalog update, testing, and cleanup. Estimated 10-13 hours total. Zero breaking changes expected.
+
+- timestamp: "Monday 03.11.2025 around 20:19"
+  iso_timestamp: "2025-11-03T18:19:09.920Z"
+  author: "claude-ai"
+  content: >
+    Merged edit tools into file tools: Consolidated replace_text, insert_at_line, delete_lines, and replace_lines from tools_edit.js into tools_files.js. Updated catalogs to reflect merge. Edit tools now part of file tools catalog with 'edit' tag for discoverability.
+
+- timestamp: "Monday 03.11.2025 around 21:05"
+  iso_timestamp: "2025-11-03T19:05:23.582Z"
+  author: "Admin-Krisu"
+  content: >
+    Renamed "get_version" catalog, implementations and files as "environment***"
+
+- timestamp: "Monday 03.11.2025 around 21:22"
+  iso_timestamp: "2025-11-03T19:22:27.741Z"
+  author: "claude-ai"
+  content: >
+    Created migration plan for new dev_tools catalog - moving 7 tools from system, search, and file catalogs to consolidate development functionality
+
+- timestamp: "Monday 03.11.2025 around 21:41"
+  iso_timestamp: "2025-11-03T19:41:06.000Z"
+  author: "claude-ai"
+  content: >
+    Successfully migrated 7 tools to new dev_tools catalog - tools moved from system, search, and file catalogs
+
+- timestamp: "Monday 03.11.2025 around 22:16"
+  iso_timestamp: "2025-11-03T20:16:10.263Z"
+  author: "claude-ai"
+  content: >
+    Found why environment catalog missing from list_tools: tools lack "environment" tag. Each tool needs catalog name in tags array to appear in catalog listing. Fix: add "environment" to all tools in tools_catalog_environment.js
+
+- timestamp: "Monday 03.11.2025 around 22:33"
+  iso_timestamp: "2025-11-03T20:33:59.161Z"
+  author: "claude-ai"
+  content: >
+    Created tools_dev.js implementation consolidating all dev tools from various catalogs (system, search, files). Updated tools_register.js with makeDevTool import and dev type handler. Modified tools_catalog_dev.js to use unified impl: { type: "dev" }. All dev tools now centralized in single implementation file.
+
+- timestamp: "Monday 03.11.2025 around 22:42"
+  iso_timestamp: "2025-11-03T20:42:09.828Z"
+  author: "claude-ai"
+  content: >
+    Fixed get_block_list path issue in tools_dev.js - removed validateWorkspacePath for source paths. Dev tools consolidation complete: all 7 dev tools now centralized in tools_dev.js with unified type:"dev" implementation.
+
+- timestamp: "Tuesday 04.11.2025 around 18:30"
+  iso_timestamp: "2025-11-04T16:30:22.077Z"
+  author: "claude-ai"
+  content: >
+    Fixed: Removed duplicate search_files entry from tools_catalog_files.js - tool belongs only in search catalog
+
+- timestamp: "Tuesday 04.11.2025 around 18:37"
+  iso_timestamp: "2025-11-04T16:37:01.547Z"
+  author: "claude-ai"
+  content: >
+    Moved search_files back to files catalog - removed from search catalog and re-added to tools_catalog_files.js with impl type: "file"
+
+- timestamp: "Tuesday 04.11.2025 around 18:41"
+  iso_timestamp: "2025-11-04T16:41:03.885Z"
+  author: "claude-ai"
+  content: >
+    Moved search_blocks from search catalog to blocks catalog - impl type changed from "search" to "blocks" to match tools_blocks.js implementation
+
+- timestamp: "Tuesday 04.11.2025 around 18:58"
+  iso_timestamp: "2025-11-04T16:58:34.556Z"
+  author: "claude-ai"
+  content: >
+    Made 'path' parameter optional for dir tool. Now defaults to projectRoot (devMode) or workspacePath (normal mode) when no path specified. Updated both implementation and schema.
+
+- timestamp: "Wednesday 05.11.2025 around 17:44"
+  iso_timestamp: "2025-11-05T15:44:50.287Z"
+  author: "claude-ai"
+  content: >
+    BUGFIX: list_tools() - Fixed catalog listing by using tool.catalogType instead of tool.impl.type. The impl field is replaced with a function during registration, so checking impl.type always failed.
+
+- timestamp: "Wednesday 05.11.2025 around 18:27"
+  iso_timestamp: "2025-11-05T16:27:31.806Z"
+  author: "Sampo-MCP"
+  content: >
+    Fixed 001_AI_Call_This_Tool_On_First_Connection tool: Moved definition from tools_catalog_index.js to tools_catalog_system.js, added implementation in tools_system.js to return YAML content from Sampo-docs/Tool-docs/System-tools/
+
+- timestamp: "Wednesday 05.11.2025 around 21:08"
+  iso_timestamp: "2025-11-05T19:08:48.059Z"
+  author: "claude-ai"
+  content: >
+    Fixed file_map.yaml generation issue - now only generates to Sampo-docs/Dev-docs, not to data folder. Changed save:true to save:false in server.js mapFiles call.
+
+- timestamp: "Thursday 06.11.2025 around 00:22"
+  iso_timestamp: "2025-11-05T22:22:19.115Z"
+  author: "claude-ai"
+  content: >
+    Fixed get_block_list default path bug - changed from _INITS.project_root to _INITS.projectSrc in both tools_blocks.js and tools_dev.js to prevent duplicated src path (D:\Sampo-MCP\src\src)
+
+- timestamp: "Thursday 06.11.2025 around 19:23"
+  iso_timestamp: "2025-11-06T17:23:17.590Z"
+  author: "Admin-Krisu"
+  content: "Krisu tests log entry"
+
+- timestamp: "Thursday 06.11.2025 around 20:00"
+  iso_timestamp: "2025-11-06T18:00:10.565Z"
+  author: "Admin-Krisu"
+  content: >
+    I will do some longer entry to test if it affects on how Sampo saves it to log-file. Lorem Ipsum Dim Dam Foo Bar 1 2 3 4 5 6 7 8 9
+
+- timestamp: "Thursday 06.11.2025 around 20:14"
+  iso_timestamp: "2025-11-06T18:14:41.299Z"
+  author: "claude-ai"
+  content: >
+    Fixed check_port parameter mismatch bug: Changed implementation from expecting 'host' to 'url' to match schema definition. Also updated catalog example and default timeout from 3000ms to 5000ms.
+
+- timestamp: "Thursday 06.11.2025 around 20:18"
+  iso_timestamp: "2025-11-06T18:18:09.737Z"
+  author: "claude-ai"
+  content: >
+    Fixed dns_lookup parameter mismatch: Changed implementation from expecting 'hostname' to 'url' to match schema. Updated catalog example as well. Same type of bug as check_port.
+
+- timestamp: "Thursday 06.11.2025 around 21:22"
+  iso_timestamp: "2025-11-06T19:22:48.994Z"
+  author: "claude-ai"
+  content: >
+    Simplified parse_yaml in docs_generator.js - now just splits tool_description line from rest of content without complex parsing
+
+- timestamp: "Thursday 06.11.2025 around 21:31"
+  iso_timestamp: "2025-11-06T19:31:52.851Z"
+  author: "claude-ai"
+  content: >
+    Krisu spent 4 hours simplifying ALL tool manuals - removed unnecessary verbosity, focused on essential params/returns/examples. Clean docs!
+
+- timestamp: "Thursday 06.11.2025 around 22:05"
+  iso_timestamp: "2025-11-06T20:05:27.867Z"
+  author: "claude-ai"
+  content: >
+    Fixed duplicate export_folder_tree blocks in tools_catalog_dev.js. Removed incorrect block that had get_sampo_package key but export_folder_tree impl. Both tools now properly defined with SchemaSingle (no params).
+
+- timestamp: "Thursday 06.11.2025 around 22:10"
+  iso_timestamp: "2025-11-06T20:10:53.527Z"
+  author: "claude-ai"
+  content: >
+    Fixed export_tools_catalog: removed duplicate case in tools_dev.js (lines 477-502). Tool correctly uses SchemaSingle (no params), exports to yaml in Dev-docs.
+
+- timestamp: "Thursday 06.11.2025 around 22:16"
+  iso_timestamp: "2025-11-06T20:16:07.119Z"
+  author: "claude-ai"
+  content: >
+    Fixed export_folder_tree bug: was reading from _INITS.projectSrc instead of dirPath parameter, breaking recursion. Now properly traverses directories and saves as YAML to Dev-docs/folder_tree.yaml
+
+- timestamp: "Thursday 06.11.2025 around 22:23"
+  iso_timestamp: "2025-11-06T20:23:15.201Z"
+  author: "claude-ai"
+  content: >
+    Fixed export_folder_tree: removed js-yaml dependency, created simple YAML formatter for folder tree structure. Saves to Dev-docs/folder_tree.yaml with proper folder counting.
+
+- timestamp: "Thursday 06.11.2025 around 22:31"
+  iso_timestamp: "2025-11-06T20:31:03.760Z"
+  author: "claude-ai"
+  content: >
+    Fixed export_folder_tree: Changed root to projectRoot instead of workspacePath, fixed undefined createSuccess to use createResponse
+
+- timestamp: "Thursday 06.11.2025 around 22:41"
+  iso_timestamp: "2025-11-06T20:41:38.826Z"
+  author: "claude-ai"
+  content: >
+    Fixed export_tools_catalog - removed undefined saveData call, now generates YAML directly and saves to devDocsPath like export_folder_tree. Added params to output.
+
+- timestamp: "Thursday 06.11.2025 around 23:47"
+  iso_timestamp: "2025-11-06T21:47:41.987Z"
+  author: "claude-ai"
+  content: >
+    Fixed network_latency tool - added extractHostname() helper to strip protocols (http://, https://) from URLs before ping. Tool now correctly pings hostnames like 'google.fi' instead of failing on 'https://google.fi'. Returns both original URL and extracted hostname in results.
+
+- timestamp: "Friday 07.11.2025 around 00:08"
+  iso_timestamp: "2025-11-06T22:08:19.827Z"
+  author: "claude-ai"
+  content: >
+    Extended URL hostname extraction fix to trace_route, check_port, scan_ports, and dns_lookup tools. All network tools using system commands (ping, tracert, socket connections, DNS) now properly strip protocols from URLs before execution.
+
+- timestamp: "Friday 07.11.2025 around 08:58"
+  iso_timestamp: "2025-11-07T06:58:00.638Z"
+  author: "Admin-Krisu"
+  content: >
+    After hours of editing, all the tool manuals have been simplified and streamlined. About 75% of their size has been removed. This is a huge amount of tokens and computing power saved. But now the latest tests show that all the tools currently offered work correctly.
+
+- timestamp: "Friday 07.11.2025 around 10:02"
+  iso_timestamp: "2025-11-07T08:02:46.889Z"
+  author: "claude-ai"
+  content: >
+    Simplified add_log_entry implementation - removed complex regex parsing, now just splits by lines and finds entries by "- timestamp:" markers. Much cleaner and more maintainable.
+
+- timestamp: "Friday 07.11.2025 around 10:51"
+  iso_timestamp: "2025-11-07T08:51:13.523Z"
+  author: "claude-ai"
+  content: >
+    Fixed get_cuda_info vs get_nvidia_smi_info confusion. get_cuda_info now correctly points to its own implementation (versions only), get_nvidia_smi_info returns full GPU details. Also removed duplicate get_nvidia_smi_info block from catalog.
+
+- timestamp: "Friday 07.11.2025 around 12:14"
+  iso_timestamp: "2025-11-07T10:14:11.641Z"
+  author: "claude-ai"
+  content: >
+    Refactored tools_files.js: removed duplicate createError/createSuccess/requireParam helpers, now uses utils.js. Replaced 17 createSuccess() calls with createResponse(). Reduced code duplication by ~22 lines.
+
+- timestamp: "Friday 07.11.2025 around 12:30"
+  iso_timestamp: "2025-11-07T10:30:40.521Z"
+  author: "claude-ai"
+  content: >
+    Refactored tools_network.js: Replaced all createSuccess() calls with createResponse() from utils.js. Imports were already correct. 10 function call replacements made. ~11 lines saved (helper blocks already removed in prior work).
+
+- timestamp: "Friday 07.11.2025 around 12:44"
+  iso_timestamp: "2025-11-07T10:44:49.184Z"
+  author: "claude-ai"
+  content: >
+    tools_blocks.js refactored: all createErrorResponse→createError, createSuccessResponse→createResponse (868 lines). Imports already correct. 10 cases updated, validateRequired function used throughout.
+
+- timestamp: "Friday 07.11.2025 around 15:15"
+  iso_timestamp: "2025-11-07T13:15:58.249Z"
+  author: "claude-ai"
+  content: >
+    tools_search.js: Refactored to use createError & createResponse from utils.js. Replaced 3 raw object returns with proper utility functions. (134 lines, 3.19 KB)

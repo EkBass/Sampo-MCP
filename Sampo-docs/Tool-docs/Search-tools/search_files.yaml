@@ -1,0 +1,30 @@
+# TOOL DOCUMENTATION: sampo:search_files
+tool_description: Recursively search directory tree for files/folders by name pattern. Case-insensitive. Results saved to JSON.
+params:
+    path:
+        type: string
+        required: true
+        description: Starting folder path to search from, relative to Workspace or absolute
+    pattern:
+        type: string
+        required: false
+        description: (Optional) File/folder name pattern (case-insensitive, partial match). If omitted with type filter, matches all items of that type.
+    type:
+        type: string
+        required: false
+        description: (Optional) Filter results, all (default), files only, or folders only
+    limit:
+        type: integer
+        required: false
+        description: (Optional) Maximum results to return (default 50)
+    output:
+        type: string
+        required: false
+        description: (Optional) Custom filename for JSON results. Auto-named with timestamp if omitted.
+returns:
+    type: object
+    structure: Total matches, returned count, results array (name, path, type), output file path
+examples:
+    - "sampo:search_files({ path: '.', pattern: 'config' })"
+    - "sampo:search_files({ path: '.', pattern: '.json', type: 'files' })"
+    - "sampo:search_files({ path: '.', pattern: 'backup', type: 'folders' })"

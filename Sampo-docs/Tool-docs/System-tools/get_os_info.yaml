@@ -1,0 +1,7 @@
+# TOOL DOCUMENTATION: sampo:get_os_info
+tool_description: Get operating system information including platform type, version, architecture, and hostname.
+returns:
+    type: object
+    structure: Platform, type, release, version, arch, hostname
+example:
+    - 'sampo:get_os_info()'

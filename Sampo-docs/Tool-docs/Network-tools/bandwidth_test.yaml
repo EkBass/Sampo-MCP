@@ -1,0 +1,17 @@
+# TOOL DOCUMENTATION: sampo:bandwidth_test
+tool_description: Test download bandwidth by fetching file and measuring transfer speed. Returns Mbps and MB/s.
+params:
+    url:
+        type: string
+        required: true
+        description: URL to test bandwidth against
+    size:
+        type: integer
+        required: false
+        description: "(Optional) Data size in bytes (default: 1048576, min: 1024, max: 10485760)"
+returns:
+    type: object
+    structure: Speed in Mbps and MB/s, transfer time (ms)
+examples:
+    - "sampo:bandwidth_test({ url: 'https://speed.cloudflare.com/__down?bytes=1000000' })"
+    - "sampo:bandwidth_test({ url: 'https://speed.cloudflare.com/__down?bytes=10000000', size: 10485760 })"

@@ -1,0 +1,31 @@
+# TOOL DOCUMENTATION: sampo:dir
+tool_description: List folder contents with sorting/filtering. Can save to JSON.
+params:
+    path:
+        type: string
+        required: true
+        description: Folder path to list
+    sort:
+        type: string
+        required: false
+        enum: ["-l", "-o", "-d", "-f", "-b", "-s"]
+        enum_description: "-l=latest, -o=oldest, -d=folders, -f=files, -b=biggest, -s=smallest"
+    filter:
+        type: string
+        required: false
+        description: Extension like '.txt' or limit number
+    output:
+        type: string
+        required: false
+        description: Save to JSON filename.json → workspace/json-data/
+returns:
+    type: object
+    structure: Array name, type, size, modified
+examples:
+    - "sampo:dir({ path: 'Projects' })"
+    - "sampo:dir({ path: 'Sampo-docs', sort: '-l' })"
+    - "sampo:dir({ path: 'data', filter: '.yaml' })"
+notes:
+    - Non-recursive (lists only direct children)
+    - Filter by extension includes dot. '.yaml' not 'yaml'
+    - Filter by number limits result count

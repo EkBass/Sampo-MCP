@@ -1,0 +1,9 @@
+# TOOL DOCUMENTATION: sampo:get_cuda_info
+tool_description: Get NVIDIA  SMI, driver and cuda versions, if available
+returns:
+    type: object
+    structure: NVIDIA  SMI, driver and cuda versions
+example:
+    - 'sampo:get_cuda_info()'
+note:
+    - use "sampo:get_nvidia_info()" for more detailed report

@@ -1,0 +1,7 @@
+# TOOL DOCUMENTATION: sampo:get_paths
+tool_description: Get all initialised Sampo-MCP paths available
+returns:
+    type: object
+    structure: Path structure
+example:
+    - 'sampo:get_paths()'

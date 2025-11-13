@@ -1,0 +1,15 @@
+# TOOL DOCUMENTATION: sampo:get_folder_size
+tool_description: Calculate total size and item count by recursively scanning folder
+params:
+    path:
+        type: string
+        required: true
+        description: Folder path
+returns:
+    type: object
+    structure:
+        size: bytes, kb, mb, gb
+        counts: files, folders, total_items
+examples:
+    - "get_folder_size({ path: '.' }) → entire workspace"
+    - "get_folder_size({ path: 'Projects/large-project' })"

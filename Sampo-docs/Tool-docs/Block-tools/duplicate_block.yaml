@@ -1,0 +1,31 @@
+# TOOL DOCUMENTATION: sampo:duplicate_block
+tool_description: Create identical copy of block with new name and markers.
+params:
+    path:
+        type: string
+        required: true
+        description: File containing the block
+    block:
+        type: string
+        required: true
+        description: Source block name
+    new_name:
+        type: string
+        required: true
+        description: New block name (must not exist)
+    position:
+        type: string
+        required: false
+        default: after
+        enum: [before, after]
+returns:
+    type: object
+    success_codes: ["OK"]
+    error_codes: ["ERROR"]
+examples:
+    - "sampo:duplicate_block({ path: 'api/handlers.js', block: 'handle_get_user', new_name: 'handle_post_user' })"
+    - "sampo:duplicate_block({ path: 'config.js', block: 'dev_config', new_name: 'prod_config', position: 'after' })"
+notes:
+    - Creates copy with identical content
+    - Use as template for variations
+    - Default position after original

@@ -1,0 +1,7 @@
+# TOOL DOCUMENTATION: sampo:get_startup_time
+tool_description: Get ISO 8601 timestamp of when Sampo-MCP server was last started.
+returns:
+    type: string
+    structure: ISO 8601 timestamp
+example:
+    - 'sampo:get_startup_time()'

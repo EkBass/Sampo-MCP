@@ -1,0 +1,693 @@
+# Sampo-MCP Block System - AI-Optimized Operational Standard
+
+
+# CORE_PRINCIPLES: Fundamental immutable rules
+core_principles:
+  rules:
+    - id: "RULE_1"
+      text: "All code must exist inside named blocks"
+      enforcement: "mandatory"
+      
+    - id: "RULE_2"
+      text: "No orphaned lines of code allowed outside block markers"
+      enforcement: "mandatory"
+      validation: "ORPHANED_CODE"
+      
+    - id: "RULE_3"
+      text: "Block names serve as functional documentation"
+      enforcement: "recommended"
+      note: "Descriptive block name replaces comments"
+      
+    - id: "RULE_4"
+      text: "100% coverage rule - every line belongs to one block"
+      enforcement: "mandatory"
+      
+    - id: "RULE_5"
+      text: "Comment lines must be inside their corresponding block"
+      enforcement: "mandatory"
+      anti_pattern: "Comments above block markers"
+
+  structural_objective:
+    "Source files must form hierarchy of named blocks enabling full programmatic mapping, extraction, and replacement"
+
+# SYNTAX: Dual syntax support for backward compatibility
+syntax:
+  support_mode: "dual"
+  backward_compatible: true
+  
+  legacy_syntax:
+    status: "supported_indefinitely"
+    opening_marker: "// <block: block_name>"
+    closing_marker: "// </block: block_name>"
+    regex_pattern: '^\/\/\s*<block:\s*([^>]+)>$'
+    
+  modern_syntax:
+    status: "recommended_for_new_code"
+    
+    file_info:
+      opening: "// <file_info: filename.ext>"
+      closing:
+        - "// </file_info: filename.ext>"
+        - "// </file_info>"
+      regex_pattern: '^\/\/\s*<file_info:\s*([^>]+)>$'
+      internal_representation: "file_info_X"
+      note: "Cleaner, more semantic"
+      
+    imports_empty:
+      self_closing: "// <block: imports/>"
+      regex_pattern: '^\/\/\s*<block:\s*imports\s*\/>$'
+      
+    regular_blocks:
+      opening: "// <block: block_name>"
+      closing: "// </block: block_name>"
+      
+  mixed_syntax:
+    allowed: true
+    note: "Files may contain both legacy and modern syntax simultaneously"
+    
+  syntax_choice_guidelines:
+    new_files: "Use modern syntax (cleaner)"
+    existing_files: "Either syntax acceptable"
+    migration: "Gradual, no forced migration"
+    tool_behavior: "Preserve input file syntax style"
+
+# REQUIRED_STRUCTURE: Mandatory structural elements
+required_structure:
+  mandatory_blocks:
+    - block_id: 1
+      name_pattern: "file_info_[exact_filename.ext]"
+      position: "first"
+      protected: true
+      purpose: "File metadata and documentation"
+      
+      syntax_variations:
+        legacy: "// <block: file_info_example.js>"
+        modern: "// <file_info: example.js>"
+        
+      operations_allowed:
+        - "read_block"
+        - "replace_block"
+        
+      operations_blocked:
+        - "delete_block"
+        - "move_block"
+        - "rename_block"
+        
+    - block_id: 2
+      name: "imports"
+      position: "second"
+      protected: true
+      purpose: "Dependency declarations"
+      
+      syntax_variations:
+        legacy_with_content: "// <block: imports>\nimport ...\n// </block: imports>"
+        legacy_empty: "// <block: imports>\n// </block: imports>"
+        modern_empty: "// <block: imports/>"
+        
+      operations_allowed:
+        - "read_block"
+        - "replace_block"
+        
+      operations_blocked:
+        - "delete_block"
+        - "move_block"
+        - "rename_block"
+        
+  protection_logic:
+    function_name: "isProtectedBlock(blockName)"
+    condition: "blockName.startsWith('file_info_') || blockName === 'imports'"
+    error_code: "PROTECTED_BLOCK"
+    error_message: "Cannot modify protected block '<name>' — mandatory structural element"
+    
+  minimal_valid_file_example: |
+    // <file_info: example.js>
+    // metadata about project and file
+    // </file_info: example.js>
+    
+    // <block: imports/>
+    
+    // <block: main_code>
+    // code content
+    // </block: main_code>
+
+# NAMING_RULES: Block name conventions and patterns
+naming_rules:
+  format:
+    case_style: "snake_case"
+    forbidden_styles:
+      - "camelCase"
+      - "PascalCase"
+      - "kebab-case"
+    validation: "NAMING_VIOLATION"
+    
+  construction_rules:
+    - "verb_first for all action-oriented blocks"
+    - "helper_ prefix for utility functions"
+    - "avoid name duplication within file"
+    - "descriptive enough to eliminate need for comments"
+    
+  naming_patterns:
+    structural:
+      - pattern: "file_info_[file.ext]"
+        purpose: "file metadata"
+        required: true
+        unique: true
+        
+      - pattern: "imports"
+        purpose: "dependency block"
+        required: true
+        unique: true
+        
+      - pattern: "constants"
+        purpose: "global constant definitions"
+        
+    parsing:
+      - pattern: "parse_*"
+        purpose: "input or file parsing logic"
+        
+    processing:
+      - pattern: "process_*"
+        purpose: "transformation logic"
+        
+    validation:
+      - pattern: "validate_*"
+        purpose: "data validation logic"
+        
+      - pattern: "verify_*"
+        purpose: "environment or system verification"
+        
+      - pattern: "ensure_*"
+        purpose: "creation or existence guarantees"
+        
+    generation:
+      - pattern: "generate_*"
+        purpose: "content or structure generation"
+        
+      - pattern: "build_*"
+        purpose: "output structure assembly"
+        
+      - pattern: "create_*"
+        purpose: "resource or instance creation"
+        
+    handlers:
+      - pattern: "handler_*"
+        purpose: "event or request handlers"
+        
+      - pattern: "manage_*"
+        purpose: "lifecycle or state management"
+        
+    utilities:
+      - pattern: "helper_*"
+        purpose: "utility logic"
+        
+    switch_logic:
+      - pattern: "case_factory_*"
+        purpose: "switch statement container"
+        
+      - pattern: "case_*"
+        purpose: "individual switch cases"
+        
+    exports:
+      - pattern: "export_*"
+        purpose: "module or API export logic"
+        
+  conflict_resolution:
+    rule: "Similar functions must diverge by at least one specificity keyword"
+    example:
+      bad: "handler_user"
+      good: ["handler_user_login", "handler_user_logout"]
+
+# SWITCH_CASE_LOGIC: Special rules for switch statement blocks
+switch_case_logic:
+  rules:
+    - id: "SWITCH_RULE_1"
+      text: "Every switch statement must exist inside a block"
+      
+    - id: "SWITCH_RULE_2"
+      text: "Single switch may be named case_factory"
+      
+    - id: "SWITCH_RULE_3"
+      text: "Multiple switches require unique descriptive names"
+      examples:
+        - "case_factory_error_types"
+        - "case_factory_request_routes"
+        
+    - id: "SWITCH_RULE_4"
+      text: "Individual cases may be enclosed in sub-blocks"
+      pattern: "case_[identifier]"
+      
+    - id: "SWITCH_RULE_5"
+      text: "Each case block must reside entirely within factory block"
+      
+    - id: "SWITCH_RULE_6"
+      text: "Block names must close in strict nesting order"
+      
+  structure_template: |
+    // <block: case_factory_version_detection>
+    switch (tool) {
+    
+      // <block: case_get_node_version>
+      case "get_node_version":
+        return await executeCommand("node --version");
+      // </block: case_get_node_version>
+    
+      // <block: case_get_python_version>
+      case "get_python_version":
+        const commands = ["py --version", "python --version"];
+        return await tryCommands(commands);
+      // </block: case_get_python_version>
+    
+      default:
+        throw new Error("Unknown tool: " + tool);
+    }
+    // </block: case_factory_version_detection>
+
+# NESTING_STRATEGY: Hierarchical block organization
+nesting_strategy:
+  rules:
+    - id: "NEST_RULE_1"
+      text: "Nested blocks represent hierarchical logical grouping"
+      
+    - id: "NEST_RULE_2"
+      text: "Parent blocks may contain one or more fully enclosed children"
+      
+    - id: "NEST_RULE_3"
+      text: "Nesting should reflect conceptual or functional grouping"
+      
+    - id: "NEST_RULE_4"
+      text: "Do not nest unnecessarily when single function exists"
+      
+    - id: "NEST_RULE_5"
+      text: "Multiple related functions benefit from parent grouping"
+      
+  usefulness_criteria:
+    - "enables category-level replacement"
+    - "enables fast block discovery"
+    - "supports structural compression during mapping"
+    
+  example_structure: |
+    // <block: api_handlers>
+    
+      // <block: handler_create_resource>
+      async function handleCreate(data) { ... }
+      // </block: handler_create_resource>
+    
+      // <block: handler_delete_resource>
+      async function handleDelete(id) { ... }
+      // </block: handler_delete_resource>
+    
+    // </block: api_handlers>
+
+# BLOCK_OPERATIONS: Tool catalog with operation rules
+block_operations:
+  tools:
+    - name: "read_block"
+      purpose: "Read content only, ignore markers"
+      creates_backup: false
+      params:
+        - "path (string, required)"
+        - "block (string, required)"
+      works_on: "all blocks"
+      
+    - name: "replace_block"
+      purpose: "Overwrite content, preserve markers"
+      creates_backup: true
+      params:
+        - "path (string, required)"
+        - "block (string, required)"
+        - "content (string, required)"
+        - "backup (boolean, optional, default: true)"
+      works_on: "all blocks"
+      note: "Can modify protected block content"
+      
+    - name: "delete_block"
+      purpose: "Remove block and markers"
+      creates_backup: true
+      params:
+        - "path (string, required)"
+        - "block (string, required)"
+        - "backup (boolean, optional, default: true)"
+      works_on: "regular blocks only"
+      blocked_on: ["file_info_*", "imports"]
+      error_code: "PROTECTED_BLOCK"
+      
+    - name: "duplicate_block"
+      purpose: "Create copy with new name"
+      creates_backup: false
+      params:
+        - "path (string, required)"
+        - "block (string, required)"
+        - "new_name (string, required)"
+        - "position (string, optional: 'before'|'after')"
+      works_on: "any block"
+      constraint: "new_name must be unique"
+      
+    - name: "add_block"
+      purpose: "Create new block at position"
+      creates_backup: false
+      params:
+        - "path (string, required)"
+        - "block (string, required)"
+        - "content (string, required)"
+        - "position (string|integer, optional: 'start'|'end'|line_number)"
+        - "reference_block (string, optional)"
+      constraint: "block name must be unique"
+      
+    - name: "move_block"
+      purpose: "Remove from source and insert to destination"
+      creates_backup: true
+      params:
+        - "from_file (string, required)"
+        - "to_file (string, required)"
+        - "block (string, required)"
+        - "position (string, optional: 'start'|'end')"
+        - "backup (boolean, optional, default: true)"
+      works_on: "regular blocks only"
+      blocked_on: ["file_info_*", "imports"]
+      error_code: "PROTECTED_BLOCK"
+      
+    - name: "rename_block"
+      purpose: "Change marker names without altering content"
+      creates_backup: true
+      params:
+        - "path (string, required)"
+        - "old_name (string, required)"
+        - "new_name (string, required)"
+        - "backup (boolean, optional, default: true)"
+      works_on: "regular blocks only"
+      blocked_on: ["file_info_*", "imports"]
+      error_code: "PROTECTED_BLOCK"
+      
+    - name: "search_blocks"
+      purpose: "Scan recursively for all blocks"
+      creates_backup: false
+      params:
+        - "path (string, optional)"
+        - "blocks (array, optional)"
+        - "output (string, optional)"
+      returns: "JSON report with locations and line numbers"
+      
+    - name: "get_block_list"
+      purpose: "List all block names in file/directory"
+      creates_backup: false
+      params:
+        - "path (string, optional)"
+      returns: "Alphabetically sorted array of block names"
+      
+  syntax_awareness:
+    note: "All tools work transparently with both legacy and modern syntax"
+    equivalence:
+      - "<file_info: X> == <block: file_info_X>"
+    preservation: "Tools preserve syntax style of input file"
+    
+  operation_matrix:
+    read_block:
+      regular_blocks: "allowed"
+      file_info: "allowed"
+      imports: "allowed"
+      
+    replace_block:
+      regular_blocks: "allowed"
+      file_info: "allowed (content only)"
+      imports: "allowed (content only)"
+      
+    delete_block:
+      regular_blocks: "allowed"
+      file_info: "PROTECTED_BLOCK"
+      imports: "PROTECTED_BLOCK"
+      
+    move_block:
+      regular_blocks: "allowed"
+      file_info: "PROTECTED_BLOCK"
+      imports: "PROTECTED_BLOCK"
+      
+    rename_block:
+      regular_blocks: "allowed"
+      file_info: "PROTECTED_BLOCK"
+      imports: "PROTECTED_BLOCK"
+      
+    add_block:
+      constraint: "unique names only"
+      
+    duplicate_block:
+      constraint: "unique names only"
+
+# VALIDATION: Automated validation logic
+validation:
+  sequence:
+    - step: 1
+      check: "mandatory_blocks_present"
+      validates:
+        - "file_info_[exact_filename] exists"
+        - "imports exists"
+      syntax_support:
+        - "// <block: file_info_X>"
+        - "// <file_info: X>"
+      error_code: "MISSING_REQUIRED_BLOCK"
+      
+    - step: "1A"
+      check: "protected_blocks_immutable"
+      validates: "No delete/move/rename on file_info_* or imports"
+      error_code: "PROTECTED_BLOCK"
+      
+    - step: 2
+      check: "marker_structural_correctness"
+      validates:
+        - "Every opening has closing"
+        - "No orphaned closing markers"
+        - "Marker names match"
+        - "Self-closing imports valid"
+      syntax_support:
+        - "// <block: X> ... // </block: X>"
+        - "// <file_info: X> ... // </file_info: X>"
+        - "// <block: imports/>"
+      error_codes:
+        unclosed: "UNCLOSED_BLOCK"
+        orphaned: "ORPHANED_CLOSE"
+        mismatch: "NAME_MISMATCH"
+        
+    - step: 3
+      check: "naming_conventions"
+      validates:
+        - "No camelCase, PascalCase, kebab-case"
+        - "Names sufficiently clear"
+        - "No duplicate names"
+      error_codes:
+        style: "NAMING_VIOLATION"
+        clarity: "NAMING_UNCLEAR"
+        duplicate: "DUPLICATE_BLOCK"
+        
+    - step: 4
+      check: "orphaned_lines"
+      validates: "No executable/declaration lines outside blocks"
+      error_code: "ORPHANED_CODE"
+      
+    - step: 5
+      check: "deprecated_patterns"
+      reports:
+        - "// <block: file_info> without filename"
+        - "Legacy empty imports when modern available"
+      suggests: "Use modern syntax for cleaner code"
+      
+    - step: 6
+      check: "final_validation"
+      categories:
+        structural_errors:
+          - "UNCLOSED_BLOCK"
+          - "ORPHANED_CLOSE"
+          - "NAME_MISMATCH"
+          - "ORPHANED_CODE"
+        convention_warnings:
+          - "MISSING_REQUIRED_BLOCK"
+          - "BLOCK_ORDER"
+          - "DEPRECATED_FORMAT"
+          - "NAMING_VIOLATION"
+      pass_condition: "structural_errors.count == 0"
+      
+  checklist:
+    - question: "Does file_info_[exact_filename] exist?"
+      syntax:
+        - "// <block: file_info_X>"
+        - "// <file_info: X>"
+        
+    - question: "Is file_info_* the first block?"
+      
+    - question: "Does imports block exist?"
+      valid_forms:
+        - "// <block: imports> ... // </block: imports>"
+        - "// <block: imports/>"
+        
+    - question: "Is imports the second block?"
+      
+    - question: "Are all block markers closed?"
+      
+    - question: "Do all block names use snake_case?"
+      
+    - question: "Are all executable lines inside blocks?"
+      
+    - question: "Are protected blocks untouched by delete/move/rename?"
+      
+  pass_condition: "All 8 checklist items return true"
+
+# ANTI_PATTERNS: Patterns AI must detect and report
+anti_patterns:
+  - id: "ANTI_PATTERN_1"
+    name: "code_before_blocks"
+    reason: "Violates 100% coverage rule"
+    severity: "error"
+    example_bad: |
+      const orphanedVar = 123;
+      // <block: main_code>
+      
+  - id: "ANTI_PATTERN_2"
+    name: "comments_above_blocks"
+    reason: "Comments should be inside blocks"
+    severity: "error"
+    example_bad: |
+      // This function handles user authentication
+      // <block: authenticate_user>
+      
+  - id: "ANTI_PATTERN_3"
+    name: "generic_block_names"
+    reason: "Non-descriptive names defeat semantic navigation"
+    severity: "warning"
+    examples_bad:
+      - "// <block: fn>"
+      - "// <block: handler>"
+      - "// <block: util>"
+      
+  - id: "ANTI_PATTERN_4"
+    name: "redundant_hierarchies"
+    reason: "Single-child parent blocks are unnecessary"
+    severity: "warning"
+    example_bad: |
+      // <block: user_functions>
+        // <block: get_user>  ← Only child, unnecessary parent
+        function getUser() { ... }
+        // </block: get_user>
+      // </block: user_functions>
+      
+  - id: "ANTI_PATTERN_5"
+    name: "legacy_empty_imports"
+    reason: "Modern syntax is cleaner"
+    severity: "info"
+    example_bad: |
+      // <block: imports>
+      // </block: imports>
+    example_good: |
+      // <block: imports/>
+
+# AI_PHILOSOPHY: Guiding principles for AI agents
+ai_philosophy:
+  imperatives:
+    - id: 1
+      text: "ALWAYS prefer block-based operations over line-based edits"
+      
+    - id: 2
+      text: "NEVER manipulate code outside the block system"
+      
+    - id: 3
+      text: "ALWAYS validate block structure before and after operations"
+      
+    - id: 4
+      text: "PREFER descriptive block names over inline comments"
+      
+    - id: 5
+      text: "TREAT blocks as atomic units of functionality"
+      
+    - id: 6
+      text: "RESPECT protected blocks (file_info_*, imports) at all times"
+      
+    - id: 7
+      text: "USE modern syntax for new code (cleaner, more semantic)"
+      
+    - id: 8
+      text: "ACCEPT both syntaxes in existing code (backward compatible)"
+      
+  block_based_thinking:
+    - "Blocks are semantic anchors (not line numbers)"
+    - "Block names are self-documenting code"
+    - "Block hierarchy reflects logical structure"
+    - "Block operations are deterministic and safe"
+
+# QUICK_REFERENCE: Fast lookups for common operations
+quick_reference:
+  check_if_protected:
+    logic: "blockName.startsWith('file_info_') || blockName === 'imports'"
+    
+  allowed_on_protected:
+    - "read_block"
+    - "replace_block (content only)"
+    
+  blocked_on_protected:
+    - "delete_block"
+    - "move_block"
+    - "rename_block"
+    
+  syntax_equivalence:
+    file_info:
+      legacy: "// <block: file_info_X>"
+      modern: "// <file_info: X>"
+      internal: "file_info_X"
+      
+    imports_empty:
+      legacy: "// <block: imports>\n// </block: imports>"
+      modern: "// <block: imports/>"
+      
+  recommended_for_new_files:
+    file_info: "// <file_info: filename.ext>"
+    imports: "// <block: imports/>"
+    
+  validation_quick_check:
+    - "file_info_* first?"
+    - "imports second?"
+    - "All markers closed?"
+    - "snake_case only?"
+    - "No orphaned code?"
+    - "Protected blocks intact?"
+
+# AI_EXECUTION_NOTES: Processing guidance for AI agents
+ai_execution_notes:
+  operation_workflow:
+    - "Parse syntax (support both legacy and modern)"
+    - "Identify protected blocks"
+    - "Validate structure before operation"
+    - "Execute operation"
+    - "Validate structure after operation"
+    - "Create backup if applicable"
+    
+  decision_making:
+    - "Check if block is protected before delete/move/rename"
+    - "Use block operations, not line operations"
+    - "Preserve syntax style of input file"
+    - "Prefer modern syntax for new code"
+    
+  error_handling:
+    - "Match error to error_codes"
+    - "Check anti_patterns for common mistakes"
+    - "Validate against checklist"
+    - "Report structural_errors vs convention_warnings"
+    
+  optimization:
+    - "Use get_block_list for fast discovery"
+    - "Use search_blocks for comprehensive analysis"
+    - "Read before write (verify current state)"
+    - "Batch related operations when possible"
+    
+  safety_checks:
+    protected_block_guard: |
+      if (isProtectedBlock(blockName)) {
+        if (operation in ['delete', 'move', 'rename']) {
+          return error('PROTECTED_BLOCK');
+        }
+      }
+      
+    syntax_detection: |
+      // Detect modern file_info
+      if (line.match(/^\/\/\s*<file_info:/)) {
+        blockName = 'file_info_' + extractFilename(line);
+      }
+      // Detect modern empty imports
+      if (line.match(/^\/\/\s*<block:\s*imports\s*\/>/)) {
+        handleEmptyImports();
+      }

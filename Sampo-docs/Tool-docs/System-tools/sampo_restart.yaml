@@ -1,0 +1,10 @@
+# TOOL DOCUMENTATION: sampo:sampo_restart
+tool_description: Restart the Sampo-MCP server. Only works when started via restart-wrapper.js.
+returns:
+    type: object
+    structure: Restart confirmation
+example:
+    - 'sampo:sampo_restart()'
+notes:
+    Brief downtime during restart (2-5 seconds)
+    Use sampo_close() to stop without restart

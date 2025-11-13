@@ -1,0 +1,27 @@
+# TOOL DOCUMENTATION: sampo:search_blocks
+tool_description: Recursively search for blocks and generate JSON report with locations and line numbers.
+params:
+    path:
+        type: string
+        required: false
+        default: Projects/Sampo-MCP-source/src
+        description: Path to search (file or directory)
+    blocks:
+        type: array
+        required: false
+        description: Specific block names. Omit for all blocks.
+    output:
+        type: string
+        required: false
+        description: JSON filename in workspace/json/ (auto-named if omitted)
+returns:
+    type: object
+    saves_to: workspace/json/{filename}.json
+    structure: total_blocks, total_files, blocks[name, file, start_line, end_line, size]
+examples:
+    - "sampo:search_blocks()"
+    - "sampo:search_blocks({ path: 'src/tools_system.js' })"
+    - "sampo:search_blocks({ blocks: ['get_cpu_info', 'get_ram_info'] })"
+notes:
+    - Results auto-saved to JSON
+    - Use read_file to view JSON results

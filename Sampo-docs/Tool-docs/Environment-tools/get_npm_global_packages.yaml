@@ -1,0 +1,5 @@
+# TOOL DOCUMENTATION: sampo:get_npm_global_packages
+tool_description: List all globally installed npm packages with their versions and dependency trees
+returns:
+    type: object
+    structure: List of global packages with versions and dependencies or error

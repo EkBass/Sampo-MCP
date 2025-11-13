@@ -1,0 +1,19 @@
+# TOOL DOCUMENTATION: sampo:get_file_info
+tool_description: Get file metadata, size, dates, line count for text files.
+params:
+    path:
+        type: string
+        required: true
+        description: File path
+returns:
+    type: object
+    structure:
+        size: bytes, kb, mb, gb
+        dates: created, modified, accessed (ISO8601)
+        line_count: For text files only
+examples:
+    - "sampo:get_file_info({ path: 'data/large_dataset.json' })"
+notes:
+    - Line count only for text files (binary N/A)
+    - All timestamps in ISO8601 format
+    - Fast operation - no content reading

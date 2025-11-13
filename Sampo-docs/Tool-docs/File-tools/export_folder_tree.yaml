@@ -1,0 +1,12 @@
+# TOOL DOCUMENTATION: sampo:export_folder_tree
+tool_description: Export complete workspace directory structure as yaml.
+returns:
+    type: object
+    saves_to: Sampo-docs/Dev-docs
+    structure: Nested yaml tree of folders
+examples:
+    - "sampo:export_folder_tree()"
+notes:
+    - Shows only folders, not files
+    - Recursively scans entire workspace
+    - Auto-generated on system startup

@@ -1,0 +1,7 @@
+# TOOL DOCUMENTATION: sampo:get_network_info
+tool_description: Get all network adapters with IPv4/IPv6 addresses, MAC addresses, subnet masks, and gateway.
+returns:
+    type: object
+    structure: Array of network interfaces with IP addresses, MAC, subnet, gateway
+example:
+    - 'sampo:get_network_info()'

@@ -1,0 +1,21 @@
+# TOOL DOCUMENTATION: sampo:rename_file
+tool_description: Rename file within same directory. Does not move to different folder.
+params:
+    path:
+        type: string
+        required: true
+        description: Current file path
+    new_name:
+        type: string
+        required: true
+        description: New filename only (not full path)
+returns:
+    type: object
+    success_codes: ["OK"]
+    error_codes: ["ERROR", "NOT_FOUND", "ALREADY_EXISTS"]
+examples:
+    - "sampo:rename_file({ path: 'utils/valdiator.js', new_name: 'validator.js' })"
+notes:
+    - File stays in same directory
+    - new_name must be filename only, not path
+    - To move to different directory, use copy_file with leave_old, false

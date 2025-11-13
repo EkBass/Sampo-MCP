@@ -1,0 +1,5 @@
+# TOOL DOCUMENTATION: sampo:get_node_version
+tool_description: Detect Node.js JavaScript runtime version installed on the system
+returns:
+    type: object
+    structure: Node.js version information or error

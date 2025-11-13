@@ -1,0 +1,7 @@
+# TOOL DOCUMENTATION: sampo:get_public_ip
+tool_description: Get public-facing IP address (WAN IP) as seen from internet, not local network IP.
+returns:
+    type: object
+    structure: Public IP address and type (ipv4/ipv6)
+example:
+    - 'sampo:get_public_ip()'

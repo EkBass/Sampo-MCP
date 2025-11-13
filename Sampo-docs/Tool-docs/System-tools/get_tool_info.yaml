@@ -1,0 +1,13 @@
+# TOOL DOCUMENTATION: sampo:get_tool_info
+tool_description: Get detailed information about a specific tool including description, parameters, and documentation.
+params:
+    tool:
+        type: string
+        required: true
+        description: Name of the tool to get information about
+returns:
+    type: object
+    structure: Tool documentation with description, parameters, and examples
+examples:
+    - "sampo:get_tool_info({ tool: 'read_file' })"
+    - "sampo:get_tool_info({ tool: 'replace_block' })"

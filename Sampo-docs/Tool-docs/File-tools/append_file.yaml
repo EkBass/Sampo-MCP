@@ -1,0 +1,29 @@
+# TOOL DOCUMENTATION: sampo:append_file
+tool_description: Append content to end of file or prepend to beginning.
+params:
+    path:
+        type: string
+        required: true
+        description: File path
+    content:
+        type: string
+        required: true
+        description: Content to append/prepend
+    prepend:
+        type: boolean
+        required: false
+        default: false
+        description: Add to beginning instead of end
+returns:
+    type: object
+    success_codes: ["OK"]
+    error_codes: ["ERROR", "NOT_FOUND"]
+examples:
+    - "sampo:append_file({ path: 'Dev-docs/log.txt', content: '\\n2025-10-29 - Added auth module' })"
+    - "sampo:append_file({ path: 'handlers.js', content: 'const logger = require('./logger');\\n', prepend: true })"
+    - "sampo:append_file({ path: 'config.js', content: '\\nexports.newFeature = true;' })"
+notes:
+    - File must exist
+    - No automatic newlines - include \\n if needed
+    - Default append to end
+    - Non-destructive - preserves existing content

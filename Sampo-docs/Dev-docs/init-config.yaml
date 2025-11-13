@@ -1,0 +1,84 @@
+# SAMPO-MCP INITIALIZATION CONFIGURATION
+# Generated: 2025-11-13T13:45:49.896Z
+# Auto-generated on server startup
+
+# SYSTEM-INFO
+system:
+  platform: win32
+  architecture: x64
+  windows: true
+  devMode: true
+
+# PATHS
+paths:
+  _INITS.workspacePath: "D:/Sampo-MCP/Sampo-Workspace"
+  _INITS.projectRoot: "D:/Sampo-MCP"
+  _INITS.projectSrc: "D:/Sampo-MCP/src"
+  _INITS.trashPath: "D:/Sampo-MCP/Sampo-Workspace/_trash"
+  _INITS.sampoDocsPath: "D:/Sampo-MCP/Sampo-docs"
+  _INITS.blockDocsPath: "D:/Sampo-MCP/Sampo-docs/Block-docs"
+  _INITS.toolDocsPath: "D:/Sampo-MCP/Sampo-docs/Tool-docs"
+  _INITS.devDocsPath: "D:/Sampo-MCP/Sampo-docs/Dev-docs"
+  _INITS.jsonPath: "D:/Sampo-MCP/Sampo-docs/json"
+  _INITS.logsPath: "D:/Sampo-MCP/Sampo-docs/_logs"
+  _INITS.backupsPath: "D:/Sampo-MCP/Sampo-docs/_backups"
+  _INITS.userDataPath: "D:/Sampo-MCP/Sampo-Workspace/User-data"
+
+# PACKAGE-INFO
+package:
+  name: "Sampo-MCP"
+  version: "0.5.0"
+  description: "Let AI access to local filesystem, hardware, software, network and much more."
+  license: "MIT"
+  homepage: "https://github.com/EkBass/Sampo-MCP-source"
+  protocol_version: "2024-11-05"
+
+# HTTP-CONFIG
+http:
+  enabled: true
+  url: "http://127.0.0.1"
+  port: 3000
+
+# RUNTIME
+runtime:
+  startup_time: "2025-11-13T13:45:49.801Z"
+  server_root: "D:/Sampo-MCP/src"
+  package_path: "D:/Sampo-MCP/package.json"
+
+# DEPENDENCIES
+dependencies:
+  @modelcontextprotocol/sdk: "^1.20.0"
+  dotenv: "^17.2.3"
+  express: "^5.1.0"
+  net: "^1.0.2"
+  node-fetch: "^3.3.2"
+  os: "^0.1.2"
+  yaml: "^2.8.1"
+  zod: "^3.25.76"
+  zod-to-json-schema: "^3.24.6"
+
+# ENGINES
+engines:
+  node: ">=20.16.0"
+  npm: ">=10.8.2"
+
+# CRITICAL-RULES
+critical_rules:
+  path_usage:
+    never:
+      - "Hardcode absolute paths"
+      - "Use string literals like 'D:\\Sampo-Workspace\\...'"
+      - "Assume workspace location"
+    always:
+      - "Use _INITS properties for ALL paths"
+      - "Import { _INITS } from './inits.js'"
+      - "Use path.join() for path construction"
+  
+  why_matters:
+    - "Portability: Works on any system"
+    - "Configuration: User can change paths in package.json"
+    - "Cross-platform: Works on Windows, Linux, macOS"
+    - "Maintainability: Paths managed centrally"
+    - "Security: validateWorkspacePath() enforces boundaries"
+
+# END

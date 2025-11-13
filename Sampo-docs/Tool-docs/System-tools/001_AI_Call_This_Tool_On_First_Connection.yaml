@@ -1,0 +1,20 @@
+# AI Tool Doc: sampo:001_AI_Call_This_Tool_On_First_Connection
+tool_description: Orientation package for AI client
+rules:
+  1: Only Sampo-MCP tools work
+  2: '_INITS' vars at runtime. See file: "Sampo-docs/Dev-docs/init-config.yaml"
+  3: Block editing for source. See file: "Sampo-docs/Block-docs/Block_system_manual.yaml"
+  4: '_INITS.devMode' false → Workspace+Docs only"
+  5: '_INITS.devMode' true → source access"
+
+tips:
+  - "'sampo:list_tools()' → catalogs | 'sampo:list_tools({catalog:'file'})' → file tools"
+  - "'sampo:get_tool_info({tool:'name'})' → full manual"
+
+docs:
+  tools: {path: "Sampo-docs/Tool-docs", desc: "Tool manuals by category"}
+  dev: {path: "Sampo-docs/Dev-docs/log.yaml", desc: "Dev. log."}
+  tree: {file: "Sampo-docs/Dev-docs/file_tree.yaml", desc: "Auto-gen file/folder map"}
+  init_cfg: {file: "Sampo-docs/Dev-docs/init-config.yaml", desc: "Auto-gen init config"}
+  blocks: {file: "Sampo-docs/Block-docs/Block_system_manual.yaml", desc: "Block system guide"}
+  user: {path: "User-data", desc: "User data"}

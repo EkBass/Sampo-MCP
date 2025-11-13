@@ -1,0 +1,7 @@
+# TOOL DOCUMENTATION: sampo:get_local_time
+tool_description: Get current local timestamp and timezone of the server.
+returns:
+    type: object
+    structure: ISO timestamp, human readable, date, time, timezone, offset, epoch (ms)
+example:
+    - 'sampo:get_local_time()'

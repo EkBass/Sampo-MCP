@@ -1,0 +1,5 @@
+# TOOL DOCUMENTATION: sampo:get_dotnet_version
+tool_description: Detect .NET SDK and runtime versions installed on the system.
+returns:
+    type: object
+    structure: SDK and runtime version information or error

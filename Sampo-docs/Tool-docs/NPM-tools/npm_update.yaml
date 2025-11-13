@@ -1,0 +1,22 @@
+# TOOL DOCUMENTATION: sampo:npm_update
+tool_description: Update npm packages to latest compatible versions. Respects semver constraints in package.json.
+params:
+    packages:
+        type: array
+        required: false
+        description: (Optional) Specific packages to update. If omitted, updates all packages
+    dry_run:
+        type: boolean
+        required: false
+        description: (Optional) Run in dry-run mode without making changes (default false)
+    path:
+        type: string
+        required: false
+        description: (Optional) Path to project directory (default Sampo-MCP-source)
+returns:
+    type: object
+    structure: Update result with version changes
+examples:
+    - "sampo:npm_update()"
+    - "sampo:npm_update({ dry_run: true })"
+    - "sampo:npm_update({ packages: ['express', 'lodash'] })"

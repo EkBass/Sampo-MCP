@@ -1,0 +1,17 @@
+# TOOL DOCUMENTATION: sampo:list_tools
+tool_description: List tool catalogs or tools within a catalog
+params:
+    catalog:
+        type: string
+        required: false
+        description: "(Optional) Catalog name: 'files', 'blocks', 'network', 'system', 'versions', 'edit', 'npm', 'search'. If omitted, returns list of available catalogs."
+returns:
+    type: object
+    structure: List of catalogs or tools with metadata
+examples:
+    - "sampo:list_tools()"
+    - "sampo:list_tools({ catalog: 'files' })"
+    - "sampo:list_tools({ catalog: 'system' })"
+notes:
+    Use get_tool_info() for single tool lookup (more efficient)
+    Use search_tools() to find tools by keyword/capability

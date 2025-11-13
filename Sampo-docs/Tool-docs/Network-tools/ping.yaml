@@ -1,0 +1,18 @@
+# TOOL DOCUMENTATION: sampo:ping
+tool_description: Test HTTP/HTTPS connectivity to URL and measure response time. Single quick ping.
+params:
+    url:
+        type: string
+        required: true
+        description: URL to ping (e.g., https://www.google.com)
+    timeout:
+        type: integer
+        required: false
+        description: "(Optional) Timeout in milliseconds (default: 5000, min: 100, max: 30000)"
+returns:
+    type: object
+    structure: Status (ok/timeout), response time (ms) if ok
+examples:
+    - "sampo:ping({ url: 'https://google.com' })"
+    - "sampo:ping({ url: 'http://localhost:3000' })"
+    - "sampo:ping({ url: 'https://example.com', timeout: 10000 })"

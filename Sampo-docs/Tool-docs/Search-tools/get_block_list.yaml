@@ -1,0 +1,14 @@
+# TOOL DOCUMENTATION: sampo:get_block_list
+tool_description: Get alphabetically sorted array of block names. Fast discovery tool.
+params:
+    path:
+        type: string
+        required: false
+        description: (Optional) Path to search for blocks (file or directory). Default "./src"
+returns:
+    type: object
+    structure: Total unique blocks count, alphabetically sorted block names array
+examples:
+    - "sampo:get_block_list()"
+    - "sampo:get_block_list({ path: 'src/tools' })"
+    - "sampo:get_block_list({ path: 'src/server.js' })"

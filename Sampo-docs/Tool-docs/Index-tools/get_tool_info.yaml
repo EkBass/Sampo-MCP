@@ -1,0 +1,14 @@
+# TOOL DOCUMENTATION: sampo:get_tool_info
+tool_description: Get detailed information about a specific tool
+params:
+  tool:
+    type: string
+    required: true
+    description: Tool name with or without 'sampo:' prefix
+returns:
+    type: object
+    example: { name: "read_file", description: "...", parameters: [...] }
+examples:
+    - "sampo:get_tool_info({ tool: 'read_file' })"
+notes:
+    - Tool name wihout 'sampo:' prefix

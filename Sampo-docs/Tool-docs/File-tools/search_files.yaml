@@ -1,0 +1,37 @@
+# TOOL DOCUMENTATION: sampo:search_files
+tool_description: Recursively search directory tree for files/folders by name pattern. Case-insensitive. Results saved to JSON.
+params:
+    path: 
+        type: string
+        required: true
+        description: Starting folder to search from
+    pattern:
+        type: string
+        required: false
+        description: Name pattern (partial match). Omit to match all of type.
+    type:
+        type: string
+        required: false
+        default: all
+        enum: [all, files, folders]
+    limit:
+        type: integer
+        required: false
+        default: 50
+    output:
+        type: string
+        required: false
+        description: JSON filename (auto-named if omitted)
+returns:
+    type: object
+    saves_to: workspace/json-data/{filename}.json
+    structure: Array, path, name, type, size, modified
+examples:
+    - "sampo:search_files({ path: 'Sampo-docs', pattern: '.yaml', type: 'files' })"
+    - "sampo:search_files({ path: '.', pattern: 'config' })"
+    - "sampo:search_files({ path: 'src', pattern: '.js', limit: 100 })"
+notes:
+    - Always recursive (searches all subdirectories)
+    - Use read_file to view results JSON
+    - Pattern matches filename, not content
+    - Case-insensitive partial matching

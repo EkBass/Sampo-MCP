@@ -1,0 +1,7 @@
+# TOOL DOCUMENTATION: sampo:get_hdd_info
+tool_description: Get disk/storage space information for workspace drive including total, used, free space and usage percentage.
+returns:
+    type: object
+    structure: Drive info with total, used, free (bytes), usage_percent
+example:
+    - 'sampo:get_hdd_info()'

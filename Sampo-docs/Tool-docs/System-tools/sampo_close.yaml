@@ -1,0 +1,9 @@
+# TOOL DOCUMENTATION: sampo:sampo_close
+tool_description: Shut down the Sampo-MCP server gracefully
+returns:
+    type: object
+    structure: Shutdown confirmation
+example:
+    - 'sampo:sampo_close()'
+warning:
+    Will shut down Sampo. Use with high care.

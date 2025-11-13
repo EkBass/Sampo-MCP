@@ -1,0 +1,22 @@
+# TOOL DOCUMENTATION: sampo:write_file
+tool_description: Create new file or completely overwrite existing file. Supports very long content.
+params:
+    path:
+        type: string
+        required: true
+        description: File path to create/overwrite
+    content:
+        type: string
+        required: true
+        description: Complete file content
+returns:
+    type: object
+    structure: Path, size, line count, timestamps
+    success_codes: ["OK"]
+    error_codes: ["ERROR"]
+examples:
+    - "sampo:write_file({ path: 'utils/validator.js', content: 'function validate(x) {...}' })"
+notes:
+    - OVERWRITES existing files without warning
+    - No automatic backup
+    - Creates parent directories automatically

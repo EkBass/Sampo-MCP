@@ -1,0 +1,7 @@
+# TOOL DOCUMENTATION: sampo:get_npm_version
+tool_description: Detect npm package manager version installed on the system.
+returns:
+    type: string
+    structure: npm version number
+example:
+    - 'sampo:get_npm_version()'

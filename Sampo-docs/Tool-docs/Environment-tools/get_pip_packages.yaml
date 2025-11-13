@@ -1,0 +1,5 @@
+# TOOL DOCUMENTATION: sampo:get_pip_packages
+tool_description: List all Python packages installed via pip with their version numbers.
+returns:
+    type: object
+    structure: List of installed Python packages with versions or error

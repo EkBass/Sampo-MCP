@@ -1,0 +1,9 @@
+# TOOL DOCUMENTATION: sampo:is_windows
+tool_description: Returns true if Sampo-MCP is running at Windows platform
+returns:
+    type: boolean
+    structure: true if Windows, false otherwise
+example:
+    - 'sampo:is_windows()'
+notes:
+    Use get_os_info() for detailed OS information

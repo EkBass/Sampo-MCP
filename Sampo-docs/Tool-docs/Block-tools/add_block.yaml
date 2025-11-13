@@ -1,0 +1,35 @@
+# TOOL DOCUMENTATION: sampo:add_block
+tool_description: Create new block with automatic markers. Position, start/end/line or before/after existing block.
+params:
+    path:
+        type: string
+        required: true
+        description: File where block will be inserted
+    block:
+        type: string
+        required: true
+        description: New block name (must be unique)
+    content:
+        type: string
+        required: true
+        description: Block content (excluding markers)
+    position:
+        type: string or integer
+        required: false
+        default: end
+        description: start, end, line number, or before/after if reference_block used
+    reference_block:
+        type: string
+        required: false
+        description: If provided, position relative to this block
+returns:
+    type: object
+    success_codes: ["OK"]
+    error_codes: ["ERROR", "BLOCK_EXISTS", "REFERENCE_NOT_FOUND"]
+examples:
+    - "sampo:add_block({ path: 'server.js', block: 'users_delete', content: 'app.delete(...)', position: 'end' })"
+    - "sampo:add_block({ path: 'handlers.js', block: 'auth_middleware', content: 'function auth() {...}', position: 'start' })"
+notes:
+    - Default position, end
+    - Use reference_block for logical grouping
+    - Block name must be unique in file

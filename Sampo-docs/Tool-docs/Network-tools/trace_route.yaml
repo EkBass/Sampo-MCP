@@ -1,0 +1,17 @@
+# TOOL DOCUMENTATION: sampo:trace_route
+tool_description: Trace network path showing all intermediate routers (hops) and their response times.
+params:
+    url:
+        type: string
+        required: true
+        description: URL to trace route to
+    max_hops:
+        type: integer
+        required: false
+        description: "(Optional) Maximum hops (default: 30, min: 1, max: 30)"
+returns:
+    type: object
+    structure: Array of hops with IP, hostname, response times (ms)
+examples:
+    - "sampo:trace_route({ url: 'google.com' })"
+    - "sampo:trace_route({ url: '192.168.1.1', max_hops: 10 })"

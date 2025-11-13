@@ -1,0 +1,17 @@
+# TOOL DOCUMENTATION: sampo:multi_ping
+tool_description: Perform HTTP pings to multiple URLs with statistics, packet loss, min/max/avg response times.
+params:
+    urls:
+        type: array
+        required: true
+        description: Array of URLs to ping (max 10)
+    timeout:
+        type: integer
+        required: false
+        description: "(Optional) Timeout per URL in milliseconds (default: 5000, min: 100, max: 30000)"
+returns:
+    type: object
+    structure: Array with URL, packet_loss, min/max/avg response times per URL
+examples:
+    - "sampo:multi_ping({ urls: ['https://google.com', 'https://github.com'] })"
+    - "sampo:multi_ping({ urls: ['https://us-api.example.com', 'https://eu-api.example.com'], timeout: 10000 })"

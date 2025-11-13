@@ -1,0 +1,26 @@
+# TOOL DOCUMENTATION: sampo:scan_ports
+tool_description: Scan TCP port range on host to discover running services. Returns list of open ports.
+params:
+    url:
+        type: string
+        required: true
+        description: URL or hostname to scan
+    start_port:
+        type: integer
+        required: true
+        description: Starting port number (1-65535)
+    end_port:
+        type: integer
+        required: true
+        description: Ending port number (1-65535)
+    timeout:
+        type: integer
+        required: false
+        description: "(Optional) Timeout per port in milliseconds (default: 1000, min: 100, max: 10000)"
+returns:
+    type: object
+    structure: Open ports list, total scanned, scan time (ms)
+examples:
+    - "sampo:scan_ports({ url: 'example.com', start_port: 80, end_port: 443 })"
+    - "sampo:scan_ports({ url: 'localhost', start_port: 1, end_port: 1000 })"
+    - "sampo:scan_ports({ url: 'localhost', start_port: 3000, end_port: 9000 })"

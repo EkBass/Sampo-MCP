@@ -1,0 +1,7 @@
+# TOOL DOCUMENTATION: sampo:network_statistics
+tool_description: Get network protocol statistics, packets, bytes, errors, connections for TCP/UDP/ICMP.
+returns:
+    type: object
+    structure: Protocol stats with connections, packets, bytes, errors for TCP/UDP/ICMP
+example:
+    - 'sampo:network_statistics()'

@@ -1,0 +1,18 @@
+# TOOL DOCUMENTATION: sampo:delete_file
+tool_description: Delete file by moving to Trash (recoverable).
+params:
+    path:
+        type: string
+        required: true
+        description: File path to delete
+returns:
+    type: object
+    success_codes: ["OK"]
+    error_codes: ["ERROR", "NOT_FOUND"]
+examples:
+    - "sampo:delete_file({ path: 'temp/processing_cache.json' })"
+    - "sampo:delete_file({ path: 'backups/server.js.old' })"
+    - "sampo:delete_file({ path: 'logs/debug.log' })"
+notes:
+    - Moved to .trash/ folder, not permanently deleted
+    - Can be recovered manually from trash

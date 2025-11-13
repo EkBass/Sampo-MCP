@@ -1,0 +1,525 @@
+# Purpose: Complete guide for AI agents to add new tools to Sampo-MCP
+# Format: Structured YAML for efficient parsing and execution
+
+
+# WORKFLOW: Sequential steps with validation gates
+workflow:
+  steps:
+    - id: "verify_tool"
+      order: 1
+      name: "Verify Tool Doesn't Exist"
+      required: true
+      validation_gate: true
+      
+      actions:
+        - action: "search_existing"
+          tools:
+            - name: "sampo:list_tools"
+              params:
+                format: "names"
+              purpose: "List all registered tools"
+              
+            - name: "sampo:search_tools"
+              params:
+                query: "<keyword>"
+              purpose: "Search by functionality keywords"
+              
+        - action: "check_similar"
+          locations:
+            - path: "Sampo-MCP-source/src/tool_implementations/"
+              method: "sampo:search_files"
+              search_type: "filename_pattern"
+              
+            - path: "Sampo-docs/Tool-docs/"
+              method: "sampo:search_files"
+              search_type: "similar_features"
+              
+      decision_tree:
+        - condition: "exact_tool_exists"
+          action: "abort"
+          message: "Tool already exists"
+          
+        - condition: "similar_tool_exists"
+          action: "evaluate"
+          options:
+            - "extend_existing"
+            - "create_alias"
+            - "create_new_if_justified"
+            
+        - condition: "no_similar_found"
+          action: "proceed_to_next_step"
+
+    - id: "choose_location"
+      order: 2
+      name: "Choose Implementation Location"
+      required: true
+      
+      file_structure:
+        base_path: "Sampo-MCP-source/src/tool_implementations/"
+        
+        files:
+          - filename: "tools_blocks.js"
+            category: "blocks"
+            purpose: "Block system operations"
+            impl_type: "blocks"
+            examples:
+              - "read_block"
+              - "replace_block"
+              - "delete_block"
+              
+          - filename: "tools_diary.js"
+            category: "diary"
+            purpose: "Diary/notes functionality"
+            impl_type: "diary"
+            examples:
+              - "add_log_entry"
+              
+          - filename: "tools_edit.js"
+            category: "edit"
+            purpose: "Line-based editing"
+            impl_type: "edit"
+            examples:
+              - "insert_at_line"
+              - "replace_lines"
+              - "delete_lines"
+              
+          - filename: "tools_files.js"
+            category: "files"
+            purpose: "File/folder operations"
+            impl_type: "files"
+            examples:
+              - "read_file"
+              - "write_file"
+              - "delete_file"
+              
+          - filename: "tools_network.js"
+            category: "network"
+            purpose: "Network diagnostics"
+            impl_type: "network"
+            examples:
+              - "ping"
+              - "dns_lookup"
+              - "check_port"
+              
+          - filename: "tools_npm.js"
+            category: "npm"
+            purpose: "npm package management"
+            impl_type: "npm"
+            examples:
+              - "npm_install"
+              - "npm_update"
+              
+          - filename: "tools_search.js"
+            category: "search"
+            purpose: "Search operations"
+            impl_type: "search"
+            examples:
+              - "search_files"
+              - "search_blocks"
+              - "search_tools"
+              
+          - filename: "tools_system.js"
+            category: "system"
+            purpose: "System info & server control"
+            impl_type: "inits"
+            examples:
+              - "get_cpu_info"
+              - "sampo_restart"
+              
+          - filename: "tools_versions.js"
+            category: "versions"
+            purpose: "Version detection"
+            impl_type: "versions"
+            examples:
+              - "get_node_version"
+              - "get_python_version"
+              
+      naming_conventions:
+        verb_first: true
+        common_verbs:
+          - "get_"    # Retrieve information
+          - "create_" # Create new resources
+          - "delete_" # Remove resources
+          - "update_" # Modify existing
+          - "list_"   # List multiple items
+          - "search_" # Search operations
+          - "check_"  # Validation/status checks
+          - "verify_" # Verification operations
+          
+      code_template: |
+        //BLOCK:<block_name>
+        case "your_tool_name": {
+            try {
+                // Implementation here
+                return clientReturn(createResponse(
+                    "Success message",
+                    resultData
+                ));
+            } catch (err) {
+                return clientReturn(createError(
+                    "ERROR_CODE",
+                    "Error message",
+                    { error: err.message }
+                ));
+            }
+        }
+        //ENDBLOCK:<block_name>
+        
+      implementation_rules:
+        - "Add as new case in appropriate case_factory_* block"
+        - "Follow block naming conventions"
+        - "Use modern block syntax (//BLOCK:/ENDBLOCK:)"
+        - "Always wrap in try-catch"
+        - "Return via clientReturn()"
+        - "Use createResponse() for success"
+        - "Use createError() for failures"
+
+    - id: "check_schema"
+      order: 3
+      name: "Check/Create Schema"
+      required: true
+      
+      schema_location: "Sampo-MCP-source/src/schemas/"
+      
+      common_schemas:
+        - name: "SchemaSingle"
+          params: "none"
+          use_case: "No parameters required"
+          
+        - name: "SchemaPath"
+          params:
+            - "path (string, required)"
+          use_case: "Single path parameter"
+          
+        - name: "SchemaReadFile"
+          params:
+            - "path (string, required)"
+            - "start_line (integer, optional)"
+            - "num_lines (integer, optional)"
+          use_case: "File reading with optional range"
+          
+        - name: "SchemaListTools"
+          params:
+            - "format (string, optional)"
+          use_case: "Optional format parameter"
+          
+      decision_tree:
+        - condition: "existing_schema_fits"
+          action: "use_existing"
+          
+        - condition: "new_schema_needed"
+          action: "create_new"
+          steps:
+            - "Create in src/schemas/schema_*.js"
+            - "Follow block system structure"
+            - "Export and import in catalog"
+
+    - id: "add_catalog"
+      order: 4
+      name: "Add to Tool Catalog"
+      required: true
+      critical: true
+      
+      catalog_location: "Sampo-MCP-source/src/tool_catalogs/tools_catalog_*.js"
+      
+      catalog_entry_template:
+        structure: |
+          //BLOCK:<tool_name>
+          your_tool_name: {
+              schema: "SchemaSingle",  // or custom schema
+              impl: { type: "inits", commands: ["your_tool_name"] },
+              description: "Clear, concise description of what tool does.",
+              tags: ["category", "keywords", "for", "search"],
+              examples: [
+                  { "tool": "your_tool_name", "args": {} },
+                  missingManual("your_tool_name")
+              ]
+          },
+          //ENDBLOCK:<tool_name>
+          
+        required_fields:
+          - name: "schema"
+            type: "string"
+            description: "Schema name from src/schemas/"
+            
+          - name: "impl"
+            type: "object"
+            fields:
+              - name: "type"
+                values: ["inits", "files", "blocks", "edit", "network", "npm", "search", "versions", "diary"]
+                description: "Implementation file category"
+                
+              - name: "commands"
+                type: "array"
+                description: "Array with tool name"
+                
+          - name: "description"
+            type: "string"
+            rules:
+              - "Clear and concise"
+              - "Starts with verb"
+              - "Explains what tool does"
+              
+          - name: "tags"
+            type: "array"
+            rules:
+              - "Include category"
+              - "Include main keywords"
+              - "For search optimization"
+              
+          - name: "examples"
+            type: "array"
+            rules:
+              - "Include usage example"
+              - "Include missingManual() call"
+
+    - id: "create_docs"
+      order: 5
+      name: "Create Documentation"
+      required: true
+      
+      docs_location: "Sampo-docs/Tool-docs/"
+      
+      categories:
+        - name: "Block-tools"
+          description: "Block system operations"
+          
+        - name: "File-tools"
+          description: "File/folder operations"
+          
+        - name: "Network-tools"
+          description: "Network diagnostics"
+          
+        - name: "Search-tools"
+          description: "Search operations"
+          
+        - name: "System-tools"
+          description: "System info & control"
+          
+        - name: "Version-tools"
+          description: "Version detection"
+          
+      documentation_template: |
+        # your_tool_name
+        
+        Brief description of what the tool does.
+        
+        ## Parameters
+        
+        - **param1** (type): Description
+        - **param2** (optional, type): Description
+        
+        Or: None required.
+        
+        ## Returns
+        
+        **Success**: What data is returned
+        **Error**: When errors occur
+        
+        ## Example
+        
+        ```
+        sampo:your_tool_name({ param1: "value" })
+        ```
+        
+        ## Response Data
+        
+        ```json
+        {
+          "example": "response structure"
+        }
+        ```
+        
+        ## Notes
+        
+        - Important usage notes
+        - Limitations or requirements
+        - Platform-specific behavior
+        
+        ## Related Tools
+        
+        - **similar_tool** - Brief relation description
+        
+      rules:
+        - "Create in correct category folder"
+        - "Filename: tool_name.md"
+        - "Follow template structure"
+        - "Include practical examples"
+        - "Document all parameters"
+        - "Specify return format"
+
+    - id: "test_tool"
+      order: 6
+      name: "Test the Tool"
+      required: true
+      validation_gate: true
+      
+      test_sequence:
+        - step: "restart_server"
+          tool: "sampo:sampo_restart"
+          params: {}
+          purpose: "Register new tool"
+          
+        - step: "verify_registration"
+          tools:
+            - name: "sampo:list_tools"
+              params:
+                format: "names"
+              validation: "tool_name_appears_in_list"
+              
+            - name: "sampo:search_tools"
+              params:
+                query: "your_keyword"
+              validation: "tool_found_by_keyword"
+              
+        - step: "test_functionality"
+          action: "call_tool_with_test_params"
+          validation: "expected_behavior"
+          
+      failure_handling:
+        - condition: "not_registered"
+          check:
+            - "Catalog entry correct?"
+            - "Schema properly exported?"
+            - "Implementation file syntax correct?"
+            
+        - condition: "registration_ok_but_fails"
+          check:
+            - "Implementation logic correct?"
+            - "Error handling in place?"
+            - "Parameters validated?"
+
+    - id: "log_changes"
+      order: 7
+      name: "Log Changes"
+      required: true
+      
+      log_location: "Sampo-docs/Dev-docs/log.txt"
+      
+      log_entry_tool: "sampo:add_log_entry"
+      
+      entry_format:
+        max_length: 256
+        content: "Added <tool_name> to <category>: <brief_description>"
+        
+      example: "Added get_disk_stats to system tools: retrieves detailed disk usage statistics"
+
+# CHECKLIST: Validation checklist for AI to verify completion
+checklist:
+  items:
+    - id: "verified_no_exist"
+      text: "Verified tool doesn't exist"
+      validation_step: 1
+      
+    - id: "impl_added"
+      text: "Implementation added to correct file"
+      validation_step: 2
+      
+    - id: "block_structure"
+      text: "Block structure follows conventions"
+      validation_step: 2
+      
+    - id: "schema_selected"
+      text: "Schema selected or created"
+      validation_step: 3
+      
+    - id: "catalog_entry"
+      text: "Catalog entry added with proper tags"
+      validation_step: 4
+      critical: true
+      
+    - id: "docs_created"
+      text: "Documentation created in correct category"
+      validation_step: 5
+      
+    - id: "server_restarted"
+      text: "Server restarted"
+      validation_step: 6
+      
+    - id: "tool_listed"
+      text: "Tool appears in list_tools"
+      validation_step: 6
+      critical: true
+      
+    - id: "tool_works"
+      text: "Tool works as expected"
+      validation_step: 6
+      critical: true
+      
+    - id: "logged"
+      text: "Changes logged to dev log"
+      validation_step: 7
+
+# COMMON_PITFALLS: Error patterns to avoid
+common_pitfalls:
+  - error: "forgetting_catalog_entry"
+    symptom: "Tool won't register"
+    solution: "Add entry to tools_catalog_*.js"
+    critical: true
+    
+  - error: "wrong_impl_type"
+    symptom: "Tool calls will fail"
+    solution: "Match impl.type to correct implementation file"
+    critical: true
+    
+  - error: "missing_schema"
+    symptom: "Parameter validation fails"
+    solution: "Create or reference correct schema"
+    
+  - error: "no_documentation"
+    symptom: "Users won't know how to use it"
+    solution: "Create markdown file in Tool-docs"
+    
+  - error: "incorrect_block_naming"
+    symptom: "Breaks block system conventions"
+    solution: "Follow verb_first naming pattern"
+
+# QUICK_REFERENCE: Fast lookup for common operations
+quick_reference:
+  find_existing_tools:
+    - "sampo:list_tools format='names'"
+    - "sampo:search_tools query='keyword'"
+    
+  find_implementation_file:
+    logic: "Match functionality category to tools_*.js file"
+    
+  choose_schema:
+    logic: "Check common_schemas first, create new only if needed"
+    
+  impl_type_mapping:
+    "tools_system.js": "inits"
+    "tools_files.js": "files"
+    "tools_blocks.js": "blocks"
+    "tools_edit.js": "edit"
+    "tools_network.js": "network"
+    "tools_npm.js": "npm"
+    "tools_search.js": "search"
+    "tools_versions.js": "versions"
+    "tools_diary.js": "diary"
+    
+  restart_server:
+    tool: "sampo:sampo_restart"
+    when: "After any code changes"
+
+# AI_EXECUTION_NOTES: Guidance for AI processing
+ai_execution_notes:
+  parsing_priority:
+    - "workflow.steps (sequential execution)"
+    - "checklist.items (validation)"
+    - "common_pitfalls (error avoidance)"
+    
+  decision_making:
+    - "Use decision_tree at each validation_gate"
+    - "Critical checkpoints cannot be skipped"
+    - "Required steps must complete successfully"
+    
+  error_recovery:
+    - "Check common_pitfalls for symptom match"
+    - "Refer to failure_handling in test_tool step"
+    - "Validate against checklist before declaring success"
+    
+  tool_usage_pattern:
+    - "Always use sampo:* tools, never native tools"
+    - "Read before write (verify current state)"
+    - "Test after implementation"
+    - "Log all changes"

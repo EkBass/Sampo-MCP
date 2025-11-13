@@ -1,0 +1,26 @@
+# TOOL DOCUMENTATION: sampo:delete_block
+tool_description: Remove entire block and markers. Automatic backup by default.
+params:
+    path:
+        type: string
+        required: true
+        description: File containing the block
+    block:
+        type: string
+        required: true
+        description: Block name to delete
+    backup:
+        type: boolean
+        required: false
+        default: true
+returns:
+    type: object
+    success_codes: ["OK"]
+    error_codes: ["ERROR", "BLOCK_NOT_FOUND", "READ_ONLY", "PROTECTED_BLOCK"]
+examples:
+    - "sampo:delete_block({ path: 'auth.js', block: 'legacy_password_auth' })"
+    - "sampo:delete_block({ path: 'server.js', block: 'unused_endpoint', backup: true })"
+    - "sampo:delete_block({ path: 'tool_system.js', block: 'debug_logging', backup: false })"
+notes:
+    - Automatic backup by default
+    - Code preserved in .backups/ if needed

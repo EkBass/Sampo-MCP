@@ -1,0 +1,17 @@
+# TOOL DOCUMENTATION: sampo:network_latency
+tool_description: Measure network latency using system's native ICMP ping. True network layer measurement.
+params:
+    url:
+        type: string
+        required: true
+        description: URL to measure latency to
+    count:
+        type: integer
+        required: false
+        description: "(Optional) Number of pings (default: 5, min: 1, max: 10)"
+returns:
+    type: object
+    structure: Min, max, avg latency (ms), packet loss percentage
+examples:
+    - "sampo:network_latency({ url: '8.8.8.8' })"
+    - "sampo:network_latency({ url: 'github.com', count: 10 })"

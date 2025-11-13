@@ -1,0 +1,13 @@
+# TOOL DOCUMENTATION: sampo:dns_lookup
+tool_description: Perform DNS resolution returning IPv4, IPv6, MX (mail), and NS (name server) records.
+params:
+    url:
+        type: string
+        required: true
+        description: URL or hostname to lookup
+returns:
+    type: object
+    structure: IPv4, IPv6, MX (mail servers), NS (name servers) records
+examples:
+    - "sampo:dns_lookup({ url: 'google.com' })"
+    - "sampo:dns_lookup({ url: 'api.github.com' })"

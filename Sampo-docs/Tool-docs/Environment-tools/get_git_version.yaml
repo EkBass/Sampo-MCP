@@ -1,0 +1,5 @@
+# TOOL DOCUMENTATION: sampo:get_git_version
+tool_description: Detect Git version control system version installed on the system
+returns:
+    type: object
+    structure: Git version information or error

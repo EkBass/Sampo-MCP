@@ -1,0 +1,27 @@
+# TOOL DOCUMENTATION: sampo:read_block
+tool_description: Extract block content (excluding markers) from file.
+params:
+    path:
+        type: string
+        required: true
+        description: File containing the block
+    block:
+        type: string
+        required: true
+        description: Block name to extract
+    output:
+        type: string
+        required: false
+        description: Save to this file (optional)
+returns:
+    type: object
+    structure: Content with metadata (file, line numbers, line count)
+    success_codes: ["OK"]
+    error_codes: ["ERROR"]
+examples:
+    - "sampo:read_block({ path: 'tool_system.js', block: 'get_cpu_info' })"
+    - "sampo:read_block({ path: 'server.js', block: 'health_check', output: 'backups/health_original.js' })"
+    - "sampo:read_block({ path: 'middleware.js', block: 'auth_jwt' })"
+notes:
+    - Returns content without block markers
+    - Copy pattern to reuse elsewhere

@@ -1,0 +1,26 @@
+# TOOL DOCUMENTATION: sampo:read_file
+tool_description: Read text file in chunks. Supports partial reading with line ranges.
+params:
+    path:
+        type: string
+        required: true
+        description: File path
+    start_line:
+        type: integer
+        required: false
+        default: 1
+        description: Starting line (1-indexed)
+    num_lines:
+        type: integer
+        required: false
+        description: Lines to read (omit for entire file)
+returns:
+    type: object
+    structure: Content with line range metadata
+examples:
+    - "sampo:read_file({ path: 'config.json' })"
+    - "sampo:read_file({ path: 'server.js', start_line: 100, num_lines: 50 })"
+    - "sampo:read_file({ path: 'logs/system.log', start_line: 500 })"
+notes:
+    - Line numbers are 1-indexed
+    - Returns metadata about line range and total lines

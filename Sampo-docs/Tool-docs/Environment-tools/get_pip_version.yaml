@@ -1,0 +1,5 @@
+# TOOL DOCUMENTATION: sampo:get_pip_version
+tool_description: Detect pip package manager version and Python location
+returns:
+    type: object
+    structure: pip version and Python path information or error

@@ -1,0 +1,5 @@
+# TOOL DOCUMENTATION: sampo:get_npm_project_packages
+tool_description: List npm packages installed in current project directory with versions and dependency trees.
+returns:
+    type: object
+    structure: List of project packages with versions and dependencies or error

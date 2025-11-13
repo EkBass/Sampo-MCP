@@ -1,0 +1,36 @@
+# TOOL DOCUMENTATION: sampo:insert_at_line
+tool_description: Insert, replace, or modify content at specific line. Three modes, before, after, replace.
+params:
+    path:
+        type: string
+        required: true
+        description: File to modify
+    line:
+        type: integer
+        required: true
+        description: Line number (1-indexed)
+    content:
+        type: string
+        required: true
+        description: Content to insert or replace with
+    mode:
+        type: string
+        required: false
+        default: after
+        enum: [before, after, replace]
+    backup:
+        type: boolean
+        required: false
+        default: false
+returns:
+    type: object
+    success_codes: ["OK"]
+    error_codes: ["ERROR"]
+examples:
+    - "sampo:insert_at_line({ path: 'server.js', line: 1, content: 'const logger = require('./logger');', mode: 'before' })"
+    - "sampo:insert_at_line({ path: 'handlers.js', line: 42, content: 'console.log(data);' })"
+    - "sampo:insert_at_line({ path: 'config.js', line: 10, content: 'const MAX = 5;', mode: 'replace' })"
+notes:
+    - Line numbers 1-indexed
+    - Default mode, after
+    - Multi-line content supported

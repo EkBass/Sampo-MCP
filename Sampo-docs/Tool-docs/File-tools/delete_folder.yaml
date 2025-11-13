@@ -1,0 +1,23 @@
+# TOOL DOCUMENTATION: sampo:delete_folder
+tool_description: Delete folder by moving to Trash. Can force delete non-empty folders.
+params:
+    path:
+        type: string
+        required: true
+        description: Folder path to delete
+    force:
+        type: boolean
+        required: false
+        default: false
+        description: Force delete non-empty folders
+returns:
+    type: object
+    success_codes: ["OK"]
+    error_codes: ["ERROR"]
+examples:
+    - "sampo:delete_folder({ path: 'temp/cache' })"
+    - "sampo:delete_folder({ path: 'build/output', force: true })"
+notes:
+    - Moves to Trash (recoverable from Workspace/_trash/)
+    - Default only deletes empty folders
+    - Set force as true to delete folders with contents

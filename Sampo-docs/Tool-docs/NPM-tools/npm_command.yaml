@@ -1,0 +1,27 @@
+# TOOL DOCUMENTATION: sampo:npm_command
+tool_description: Run safe npm commands (whitelist = install, update, list, outdated, audit, view, doctor, dedupe, prune). Dangerous commands blocked.
+params:
+    command:
+        type: string
+        required: true
+        description: npm command to run (install, update, list, outdated, audit, etc.)
+    args:
+        type: array
+        required: false
+        description: (Optional) Additional arguments for the npm command
+    dry_run:
+        type: boolean
+        required: false
+        description: (Optional) Run in dry-run mode without making changes (default, false)
+    path:
+        type: string
+        required: false
+        description: (Optional) Path to project directory (default, current workspace)
+returns:
+    type: object
+    structure: Command output
+allowed_commands: [install, update, list, outdated, audit, view, doctor, dedupe, prune]
+examples:
+    - "sampo:npm_command({ command: 'outdated' })"
+    - "sampo:npm_command({ command: 'audit' })"
+    - "sampo:npm_command({ command: 'view', args: ['express', 'version'] })"

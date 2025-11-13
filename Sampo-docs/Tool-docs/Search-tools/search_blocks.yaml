@@ -1,0 +1,22 @@
+# TOOL DOCUMENTATION: sampo:search_blocks
+tool_description: Recursively search for blocks and generate report with locations and line numbers.
+params:
+    path:
+        type: string
+        required: false
+        description: "(Optional) Path to search for blocks (file or directory). Default Projects/Sampo-MCP-source/src"
+    blocks:
+        type: array
+        required: false
+        description: "(Optional) Array of specific block names to find (e.g., ['get_cpu_info', 'append_file']). If omitted, finds all blocks."
+    output:
+        type: string
+        required: false
+        description: "(Optional) Save results to JSON file in workspace/json/ (e.g., 'blocks.json')"
+returns:
+    type: object
+    structure: Total blocks/files count, block details (name, file, lines), output file path
+examples:
+    - "sampo:search_blocks()"
+    - "sampo:search_blocks({ path: 'src/tools_system.js' })"
+    - "sampo:search_blocks({ blocks: ['get_cpu_info', 'get_ram_info'] })"

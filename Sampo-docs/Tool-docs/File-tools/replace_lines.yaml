@@ -1,0 +1,36 @@
+# TOOL DOCUMENTATION: sampo:replace_lines
+tool_description: Replace range of lines with new content. Perfect for refactoring functions or config blocks.
+params:
+    path:
+        type: string
+        required: true
+        description: File to modify
+    start:
+        type: integer
+        required: true
+        description: Starting line (1-indexed, inclusive)
+    end:
+        type: integer
+        required: true
+        description: Ending line (1-indexed, inclusive)
+    new_content:
+        type: string
+        required: true
+        description: New content (multi-line OK, empty string = delete)
+    backup:
+        type: boolean
+        required: false
+        default: false
+returns:
+    type: object
+    success_codes: ["OK"]
+    error_codes: ["ERROR"]
+examples:
+    - "sampo:replace_lines({ path: 'utils.js', start: 42, end: 58, new_content: 'function calc() {...}', backup: true })"
+    - "sampo:replace_lines({ path: 'config.js', start: 10, end: 15, new_content: 'const db = {...}' })"
+    - "sampo:replace_lines({ path: 'server.js', start: 100, end: 110, new_content: '' })"
+notes:
+    - Line numbers 1-indexed and inclusive
+    - start must be ≤ end
+    - Empty new_content deletes the lines
+    - Atomic operation - no line number shifting

@@ -1,0 +1,27 @@
+# TOOL DOCUMENTATION: sampo:rewrite_line
+tool_description: Replace or create specific line by number. Useful for config files and single-line updates.
+params:
+    path:
+        type: string
+        required: true
+        description: File to modify
+    line_number:
+        type: integer
+        required: true
+        description: Line number (1-indexed)
+    content:
+        type: string
+        required: true
+        description: New content for the line
+returns:
+    type: object
+    success_codes: ["OK"]
+    error_codes: ["ERROR"]
+examples:
+    - "sampo:rewrite_line({ path: 'config.js', line_number: 5, content: 'const PORT = 8080;' })"
+    - "sampo:rewrite_line({ path: 'utils.js', line_number: 42, content: '// Calculate average' })"
+    - "sampo:rewrite_line({ path: 'server.js', line_number: 3, content: 'const express = require('express');' })"
+notes:
+    - Line numbers 1-indexed
+    - Creates empty lines if line_number exceeds file length
+    - For multi-line edits, use replace_lines

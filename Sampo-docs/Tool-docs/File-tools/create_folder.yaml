@@ -1,0 +1,18 @@
+# TOOL DOCUMENTATION: sampo:create_folder
+tool_description: Create new folder. Auto-creates parent directories if needed.
+params:
+    path:
+        type: string
+        required: true
+        description: Folder path to create
+returns:
+    type: object
+    success_codes: ["OK"]
+    error_codes: ["ERROR"]
+examples:
+    - "sampo:create_folder({ path: 'data/exports' })"
+    - "sampo:create_folder({ path: 'Projects/2025/Q4/reports' })"
+    - "sampo:create_folder({ path: 'temp/batch-2025-10-29' })"
+notes:
+    - Auto-creates parent directories
+    - Idempotent - safe if folder exists

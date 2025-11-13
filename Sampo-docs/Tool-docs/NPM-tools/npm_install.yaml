@@ -1,0 +1,26 @@
+# TOOL DOCUMENTATION: sampo:npm_install
+tool_description: Install npm packages - all from package.json or specific packages. Supports dev dependencies and dry-run.
+params:
+    packages:
+        type: array
+        required: false
+        description: (Optional) Specific packages to install. If omitted, installs all from package.json
+    save_dev:
+        type: boolean
+        required: false
+        description: (Optional) Save as dev dependency (default false)
+    dry_run:
+        type: boolean
+        required: false
+        description: (Optional) Run in dry-run mode without making changes (default false)
+    path:
+        type: string
+        required: false
+        description: (Optional) Path to project directory (default Sampo-MCP-source)
+returns:
+    type: object
+    structure: Installation result with package details
+examples:
+    - "sampo:npm_install()"
+    - "sampo:npm_install({ packages: ['express'] })"
+    - "sampo:npm_install({ packages: ['jest', 'eslint'], save_dev: true })"

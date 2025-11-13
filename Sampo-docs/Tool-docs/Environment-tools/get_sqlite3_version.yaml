@@ -1,0 +1,5 @@
+# TOOL DOCUMENTATION: sampo:get_sqlite3_version
+tool_description: Detect SQLite3 database engine version installed on the system.
+returns:
+    type: object
+    structure: SQLite3 version information or error

@@ -1,0 +1,7 @@
+# TOOL DOCUMENTATION: sampo:get_cpu_info
+tool_description: Get CPU information including model, architecture, core count, and clock speed.
+returns:
+    type: object
+    structure: CPU information with model, architecture, cores, speed (MHz)
+example:
+    - 'sampo:get_cpu_info()'

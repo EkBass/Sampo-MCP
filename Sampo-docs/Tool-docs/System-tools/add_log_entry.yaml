@@ -1,0 +1,14 @@
+# TOOL DOCUMENTATION: sampo:add_log_entry
+tool_description: Add timestamped entry to development log file Sampo-docs/Dev-docs/log.yaml
+params:
+-   name: content
+    type: string
+    required: true
+    max_length: 512
+returns:
+    type: object
+    structure: Confirmation with timestamp
+examples:
+    "sampo:add_log_entry({content: 'Refactored authentication module' })"
+notes:
+    Sampo-MCP indetifies the client AI automatically

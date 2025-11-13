@@ -1,0 +1,28 @@
+# TOOL DOCUMENTATION: sampo:copy_file
+tool_description: Copy file to new location (or move if leave_old is false).
+params:
+    from:
+        type: string
+        required: true
+        description: Source file path
+    to:
+        type: string
+        required: true
+        description: Destination file path
+    leave_old:
+        type: boolean
+        required: false
+        default: true
+        description: Keep original (true = copy, false = move)
+returns:
+    type: object
+    success_codes: ["OK"]
+    error_codes: ["ERROR", "NOT_FOUND", "ALREADY_EXISTS"]
+examples:
+    - "sampo:copy_file({ from: 'server.js', to: 'backups/server.js.backup' })"
+    - "sampo:copy_file({ from: 'temp/data.json', to: 'archive/data.json', leave_old: false })"
+    - "sampo:copy_file({ from: 'config/production.yaml', to: 'config/staging.yaml' })"
+notes:
+    - Creates parent directories automatically
+    - Default copy (keeps original)
+    - Set leave_old as false to move

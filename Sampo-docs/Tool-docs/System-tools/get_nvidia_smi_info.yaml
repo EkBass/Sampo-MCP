@@ -1,0 +1,9 @@
+# TOOL DOCUMENTATION: sampo:get_nvidia_smi_info
+tool_description: Get NVIDIA GPU and CUDA driver information including model, memory, temperature, and power usage.
+returns:
+    type: object
+    structure: GPU name, temperature (C), memory used/total (MB), utilization (%)
+example:
+    - 'sampo:get_nvidia_smi_info()'
+note:
+    - Use "sampo:get_cuda_version()" just for version checking

@@ -1,0 +1,7 @@
+# TOOL DOCUMENTATION: sampo:get_ram_info
+tool_description: Get system memory (RAM) information including total, free, used memory and usage percentage.
+returns:
+    type: object
+    structure: Total, free, used (bytes), usage_percent
+example:
+    - 'sampo:get_ram_info()'

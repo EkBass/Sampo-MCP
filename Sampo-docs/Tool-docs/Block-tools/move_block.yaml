@@ -1,0 +1,36 @@
+# TOOL DOCUMENTATION: sampo:move_block
+tool_description: Move block from one file to another. Extract features, split monoliths. Dual backups.
+params:
+    from_file:
+        type: string        
+        required: true
+        description: Source file
+    to_file:
+        type: string
+        required: true
+        description: Target file
+    block:
+        type: string
+        required: true
+        description: Block name to move
+    position:
+        type: string
+        required: false
+        default: end
+        enum: [start, end]
+    backup:
+        type: boolean
+        required: false
+        default: true
+returns:
+    type: object
+    success_codes: ["OK"]
+    error_codes: ["ERROR", "BLOCK_NOT_FOUND", "BLOCK_EXISTS_IN_TARGET"]
+examples:
+    - "sampo:move_block({ from_file: 'server.js', to_file: 'auth/middleware.js', block: 'jwt_auth', position: 'end' })"
+    - "sampo:move_block({ from_file: 'utils.js', to_file: 'utils/date-helpers.js', block: 'format_date' })"
+    - "sampo:move_block({ from_file: 'monolith.js', to_file: 'services/user.js', block: 'user_validation' })"
+notes:
+    - Removes from source, adds to target
+    - Both files backed up automatically
+    - When moved "start", block is placed after mandatory "file info" and "imports" blocks.

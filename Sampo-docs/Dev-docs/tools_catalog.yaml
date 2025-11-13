@@ -1,0 +1,233 @@
+# SAMPO-MCP TOOLS CATALOG
+# Generated: Thursday 06.11.2025 around 22:42
+# Total tools: 76
+
+tools_catalog:
+  - name: "001_AI_Call_This_Tool_On_First_Connection"
+    description: "Init orientation package - call first"
+
+  - name: "add_block"
+    description: "Create new block with automatic markers. Position, start/end/line or before/after existing block."
+
+  - name: "add_log_entry"
+    description: "Add timestamped entry to development log file Sampo-docs/Dev-docs/log.yaml"
+
+  - name: "append_file"
+    description: "Append content to end of file or prepend to beginning."
+
+  - name: "bandwidth_test"
+    description: "Test download bandwidth by fetching file and measuring transfer speed. Returns Mbps and MB/s."
+
+  - name: "check_port"
+    description: "Check if specific TCP port is open and accepting connections on a host."
+
+  - name: "copy_file"
+    description: "Copy file to new location (or move if leave_old is false)."
+
+  - name: "copy_folder"
+    description: "Copy folder and all contents to new location (or move if leave_old is false)."
+
+  - name: "create_folder"
+    description: "Create new folder. Auto-creates parent directories if needed."
+
+  - name: "delete_block"
+    description: "Remove entire block and markers. Automatic backup by default."
+
+  - name: "delete_file"
+    description: "Delete file by moving to Trash (recoverable)."
+
+  - name: "delete_folder"
+    description: "Delete folder by moving to Trash. Can force delete non-empty folders."
+
+  - name: "delete_lines"
+    description: "Delete range of lines from file. Specify start and end (inclusive)."
+
+  - name: "dir"
+    description: "List folder contents with sorting/filtering. Can save to JSON."
+
+  - name: "dns_lookup"
+    description: "Perform DNS resolution returning IPv4, IPv6, MX (mail), and NS (name server) records."
+
+  - name: "duplicate_block"
+    description: "Create identical copy of block with new name and markers."
+
+  - name: "export_folder_tree"
+    description: "Export complete workspace directory structure as yaml."
+
+  - name: "export_tools_catalog"
+    description: "Export complete catalog of all Sampo-MCP tools as yaml."
+
+  - name: "get_block_list"
+    description: "Get alphabetically sorted array of block names. Fast discovery tool."
+
+  - name: "get_cpu_info"
+    description: "Get CPU information including model, architecture, core count, and clock speed."
+
+  - name: "get_cuda_info"
+    description: "Get NVIDIA GPU and CUDA driver information including model, memory, temperature, and power usage."
+
+  - name: "get_current_uptime"
+    description: "Returns Sampo-MCP server uptime"
+
+  - name: "get_dotnet_version"
+    description: "Detect .NET SDK and runtime versions installed on the system."
+
+  - name: "get_file_info"
+    description: "Get file metadata, size, dates, line count for text files."
+
+  - name: "get_folder_size"
+    description: "Calculate total size and item count by recursively scanning folder"
+
+  - name: "get_freebasic_version"
+    description: "Detect FreeBASIC compiler version installed on the system"
+
+  - name: "get_git_version"
+    description: "Detect Git version control system version installed on the system"
+
+  - name: "get_hdd_info"
+    description: "Get disk/storage space information for workspace drive including total, used, free space and usage percentage."
+
+  - name: "get_help"
+    description: "Get comprehensive help guide about Sampo-MCP capabilities organized by category (file operations, system info, network tools, version detection, search) with usage examples and best practices."
+
+  - name: "get_local_time"
+    description: "Get current local timestamp and timezone of the server."
+
+  - name: "get_network_info"
+    description: "Get all network adapters with IPv4/IPv6 addresses, MAC addresses, subnet masks, and gateway."
+
+  - name: "get_node_version"
+    description: "Detect Node.js JavaScript runtime version installed on the system"
+
+  - name: "get_npm_global_packages"
+    description: "List all globally installed npm packages with their versions and dependency trees"
+
+  - name: "get_npm_project_packages"
+    description: "List npm packages installed in current project directory with versions and dependency trees."
+
+  - name: "get_npm_version"
+    description: "Detect npm package manager version installed on the system"
+
+  - name: "get_nvidia_smi_info"
+    description: "Get NVIDIA GPU and CUDA driver information including model, memory, temperature, and power usage."
+
+  - name: "get_os_info"
+    description: "Get operating system information including platform type, version, architecture, and hostname."
+
+  - name: "get_paths"
+    description: "Get all initialised Sampo-MCP paths available"
+
+  - name: "get_pip_packages"
+    description: "List all Python packages installed via pip with their version numbers."
+
+  - name: "get_pip_version"
+    description: "Detect pip package manager version and Python location"
+
+  - name: "get_public_ip"
+    description: "Get public-facing IP address (WAN IP) as seen from internet, not local network IP."
+
+  - name: "get_python_version"
+    description: "Detect Python interpreter version installed on the system."
+
+  - name: "get_ram_info"
+    description: "Get system memory (RAM) information including total, free, used memory and usage percentage."
+
+  - name: "get_sampo_info"
+    description: "Get Sampo-MCP server version, dependencies, HTTP API config, and metadata."
+
+  - name: "get_sampo_package"
+    description: "Returns Sampo-MCP package.json"
+
+  - name: "get_server_root"
+    description: "Get absolute path to Sampo-MCP server installation directory."
+
+  - name: "get_sqlite3_version"
+    description: "Detect SQLite3 database engine version installed on the system."
+
+  - name: "get_startup_time"
+    description: "Get ISO 8601 timestamp of when Sampo-MCP server was last started."
+
+  - name: "get_tool_info"
+    description: "Get detailed information about a specific tool"
+
+  - name: "insert_at_line"
+    description: "Insert, replace, or modify content at specific line. Three modes, before, after, replace."
+
+  - name: "is_windows"
+    description: "Returns true if Sampo-MCP is running at Windows platform"
+
+  - name: "list_tools"
+    description: "List available tool catalogs or tools within a catalog"
+
+  - name: "move_block"
+    description: "Move block from one file to another. Extract features, split monoliths. Dual backups."
+
+  - name: "multi_ping"
+    description: "Perform HTTP pings to multiple URLs with statistics, packet loss, min/max/avg response times."
+
+  - name: "network_latency"
+    description: "Measure network latency using system's native ICMP ping. True network layer measurement."
+
+  - name: "network_statistics"
+    description: "Get network protocol statistics, packets, bytes, errors, connections for TCP/UDP/ICMP."
+
+  - name: "npm_command"
+    description: "Run safe npm commands (whitelist = install, update, list, outdated, audit, view, doctor, dedupe, prune). Dangerous commands blocked."
+
+  - name: "npm_install"
+    description: "Install npm packages - all from package.json or specific packages. Supports dev dependencies and dry-run."
+
+  - name: "npm_update"
+    description: "Update npm packages to latest compatible versions. Respects semver constraints in package.json."
+
+  - name: "ping"
+    description: "Test HTTP/HTTPS connectivity to URL and measure response time. Single quick ping."
+
+  - name: "read_block"
+    description: "Extract block content (excluding markers) from file."
+
+  - name: "read_file"
+    description: "Read text file in chunks. Supports partial reading with line ranges."
+
+  - name: "rename_block"
+    description: "Rename block (updates markers only, content unchanged). Cannot rename protected blocks."
+
+  - name: "rename_file"
+    description: "Rename file within same directory. Does not move to different folder."
+
+  - name: "replace_block"
+    description: "Update block content by name (not line numbers). Survives refactoring, automatic backup."
+
+  - name: "replace_lines"
+    description: "Replace range of lines with new content. Perfect for refactoring functions or config blocks."
+
+  - name: "replace_text"
+    description: "Find and replace exact text block. Text must appear exactly once. Automatic backup by default."
+
+  - name: "rewrite_line"
+    description: "Replace or create specific line by number. Useful for config files and single-line updates."
+
+  - name: "sampo_close"
+    description: "Shut down the Sampo-MCP server gracefully"
+
+  - name: "sampo_restart"
+    description: "Restart the Sampo-MCP server. Only works when started via restart-wrapper.js."
+
+  - name: "scan_ports"
+    description: "Scan TCP port range on host to discover running services. Returns list of open ports."
+
+  - name: "search_blocks"
+    description: "Recursively search for blocks and generate JSON report with locations and line numbers."
+
+  - name: "search_files"
+    description: "Recursively search directory tree for files/folders by name pattern. Case-insensitive. Results saved to JSON."
+
+  - name: "search_tools"
+    description: "Search for Sampo-MCP tools by keywords with relevance scoring. Returns ranked results with descriptions, tags, notes, and examples."
+
+  - name: "trace_route"
+    description: "Trace network path showing all intermediate routers (hops) and their response times."
+
+  - name: "write_file"
+    description: "Create new file or completely overwrite existing file. Supports very long content."
+

@@ -1,0 +1,22 @@
+# TOOL DOCUMENTATION: sampo:check_port
+tool_description: Check if specific TCP port is open and accepting connections on a host.
+params:
+    url:
+        type: string
+        required: true
+        description: URL or hostname to check
+    port:
+        type: integer
+        required: true
+        description: Port number to check (1-65535)
+    timeout:
+        type: integer
+        required: false
+        description: "(Optional) Timeout in milliseconds (default: 5000, min: 100, max: 30000)"
+returns:
+    type: object
+    structure: Status (open/closed), response time (ms) if open
+examples:
+    - "sampo:check_port({ url: 'example.com', port: 80 })"
+    - "sampo:check_port({ url: 'localhost', port: 5432 })"
+    - "sampo:check_port({ url: '192.168.1.100', port: 22, timeout: 10000 })"

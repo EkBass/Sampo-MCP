@@ -1,0 +1,7 @@
+# TOOL DOCUMENTATION: sampo:get_current_uptime
+tool_description: Returns Sampo-MCP server uptime
+returns:
+    type: string
+    structure: Human-readable duration
+example:
+    - 'sampo:get_current_uptime()'
