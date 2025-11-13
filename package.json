@@ -1,0 +1,182 @@
+{
+  "private": true,
+  "type": "module",
+  "name": "Sampo-MCP",
+  "description": "Let AI access to local filesystem, hardware, software, network and much more.",
+  "version": "0.5.0",
+  "homepage": "https://github.com/EkBass/Sampo-MCP-source",
+  "license": "MIT",
+  "main": "restart-wrapper.js",
+  "packageManager": "npm@10.8.2",
+  "author": {
+    "name": "Kristian Virtanen",
+    "url": "https://github.com/EkBass/Sampo-MCP-source",
+    "email": "krisu.virtanen@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/EkBass/Sampo-MCP-source",
+    "participate": "Absolutely. Help from Linux and macOS users in particular would be a great, great, super great thing."
+  },
+  "engines": {
+    "node": ">=20.16.0",
+    "npm": ">=10.8.2"
+  },
+  "keywords": [
+    "MCP",
+    "Model Context Protocol",
+    "node",
+    "js",
+    "LLM",
+    "extension",
+    "Claude AI",
+    "OpenAI",
+    "Mistral AI",
+    "AI",
+    "llama"
+  ],
+  "workspaces": [
+    "Windows",
+    "Linux (not tested)"
+  ],
+  "config": {
+    "installRoot": "D:\\Sampo-MCP",
+    "devMode": true,
+    "trashRoot": "_trash",
+    "jsonRoot": "json",
+    "logs": "_logs",
+    "logFile": "log.txt",
+    "sampoDocs": "Sampo-docs",
+    "blockDocs": "Block-docs",
+    "initDocs": "Init-docs",
+    "toolDocs": "Tool-docs",
+    "devDocs": "Dev-docs",
+    "userData": "User-data",
+    "errorLogFile": "errorLog.txt",
+    "enableHttp": true,
+    "httpPort": 3000,
+    "httpUrl": "http://127.0.0.1",
+    "protocolVersion": "2024-11-05",
+    "cleanup": {
+      "trashRetentionDays": 10,
+      "jsonRetentionDays": 10,
+      "cleanupIntervalHours": 24
+    },
+    "resources": {
+      "maxRecentJsonFiles": 5
+    },
+    "cleanupState": {
+      "lastCleanup": 1762978782473,
+      "lastCleanupISO": "2025-11-12T20:19:42.473Z",
+      "results": {
+        "trash": {
+          "scanned": 17,
+          "deleted": 1,
+          "moved": 0,
+          "errors": 0,
+          "freedBytes": 0
+        },
+        "json": {
+          "scanned": 74,
+          "deleted": 0,
+          "moved": 0,
+          "errors": 0,
+          "freedBytes": 0
+        },
+        "timestamp": "2025-11-12T20:19:42.459Z"
+      }
+    }
+  },
+  "configDocs": {
+    "_description": "Configuration field descriptions for INITS.md documentation generation",
+    "installRoot": "Absolute path to Sampo-MCP installation/source directory. Used by init.js to locate server files and create dev symlinks.",
+    "workspaceRoot": "Absolute path to the user's workspace root directory where all AI-accessible files are stored. All file operations are restricted to this directory for security.",
+    "devMode": "Enable development mode features: creates source code symlinks in workspace for AI access, enables automatic backups, and exposes developer tools.",
+    "trashRoot": "Folder name for trash directory (relative to workspace root). Deleted files are moved here before permanent deletion.",
+    "jsonRoot": "Folder name for JSON output files (relative to Sampo-docs). Search results and tool outputs are stored here.",
+    "logs": "Folder name for log files (relative to Sampo-docs). Server logs and error logs are written here.",
+    "logFile": "Filename for main server log. Contains general server messages and tool execution logs.",
+    "errorLogFile": "Filename for error log. Contains error messages and stack traces.",
+    "sampoDocs": "Main Sampo documentation folder name (relative to workspace root). Contains all generated documentation and user data.",
+    "blockDocs": "Folder name for block documentation (relative to Sampo-docs). Auto-generated documentation of code blocks.",
+    "initDocs": "Folder name for initialization documentation (relative to Sampo-docs). Contains INITS.md and configuration guides.",
+    "toolDocs": "Folder name for tool guides (relative to Sampo-docs). Individual markdown files for each MCP tool.",
+    "devDocs": "Folder name for developer documentation (relative to Sampo-docs). Technical documentation for Sampo-MCP development.",
+    "userData": "Folder name for user-specific data (relative to workspace root). General user files and data storage.",
+    "enableHttp": "Enable HTTP/REST API server. When true, Sampo-MCP exposes an HTTP interface in addition to stdio MCP protocol.",
+    "httpPort": "Port number for HTTP API server. Default is 3000.",
+    "httpUrl": "Base URL for HTTP API. Used for generating API documentation and links.",
+    "protocolVersion": "MCP (Model Context Protocol) version string. Defines which protocol features are supported.",
+    "cleanup": {
+      "_description": "Automatic cleanup configuration. Manages old files to prevent disk space issues.",
+      "trashRetentionDays": "Number of days to keep files in trash before permanent deletion. Files older than this are automatically deleted.",
+      "jsonRetentionDays": "Number of days to keep old JSON output files. Helps prevent accumulation of search results and tool outputs.",
+      "cleanupIntervalHours": "Hours between automatic cleanup runs. Set to 24 for daily cleanup."
+    },
+    "resources": {
+      "_description": "Resource management configuration",
+      "maxRecentJsonFiles": "Maximum number of recent JSON files to show in MCP resources list"
+    }
+  },
+  "initsDocs": {
+    "_description": "Documentation for _INITS object properties exported from init.js",
+    "paths": {
+      "workspacePath": "Validated absolute path to workspace root. All file operations must be within this directory. Security boundary for AI file access.",
+      "projectRoot": "Absolute path to Sampo-MCP installation root. Points to where package.json and src/ folder are located.",
+      "trashPath": "Absolute path to trash folder for deleted files. Files are moved here before permanent deletion.",
+      "jsonPath": "Absolute path to JSON output folder. Search results, tool outputs, and structured data are stored here.",
+      "logsPath": "Absolute path to logs folder. Contains server log files and error logs.",
+      "backupsPath": "Absolute path to automatic backups folder (dev mode only). Stores timestamped backups of modified files.",
+      "userDataPath": "Absolute path to user data folder. General purpose storage for user files.",
+      "userDiaryPath": "Absolute path to diary data folder. Stores personal diary entries.",
+      "userNotesPath": "Absolute path to notes folder. Quick notes and annotations storage.",
+      "userRemindersPath": "Absolute path to reminders folder. Time-based reminders and notifications.",
+      "sampoDocsPath": "Absolute path to main Sampo documentation folder. Root for all generated documentation.",
+      "blockDocsPath": "Absolute path to block documentation folder. Auto-generated code block structure documentation.",
+      "initsDocsPath": "Absolute path to initialization documentation folder. Contains INITS.md and configuration documentation.",
+      "toolDocsPath": "Absolute path to tool guides folder. Individual markdown documentation for each MCP tool.",
+      "devDocsPath": "Absolute path to developer documentation folder. Technical documentation and development guides.",
+      "logFile": "Absolute path to main log file. Full path including filename for server logs.",
+      "errorLogFile": "Absolute path to error log file. Full path including filename for error tracking."
+    },
+    "system_info": {
+      "win": "Boolean indicating if running on Windows platform. Used for platform-specific path handling and command execution.",
+      "arch": "System architecture string (x64, arm64, etc.). Node.js os.arch() value.",
+      "platform": "Operating system platform string (win32, linux, darwin). Node.js os.platform() value.",
+      "devMode": "Boolean indicating if development mode is enabled. Controls dev symlinks, backups, and developer tools."
+    },
+    "runtime_info": {
+      "startup_time": "Unix timestamp in milliseconds when server started. Used for uptime calculations and log timestamps.",
+      "server_root": "Absolute path to server source code directory (src/ folder). Used for loading modules and generating documentation.",
+      "package_path": "Absolute path to package.json file. Used for reading configuration and metadata."
+    },
+    "sampo_metadata": {
+      "Sampo_Name": "Package name from package.json. Identifies the Sampo-MCP installation.",
+      "Sampo_MCP_version": "Current Sampo-MCP version string. Semantic version (major.minor.patch).",
+      "Sampo_MCP_description": "Package description from package.json. Brief summary of Sampo-MCP functionality.",
+      "Sampo_MCP_homepage": "Project homepage URL. Links to GitHub repository or project website.",
+      "Sampo_MCP_license": "Software license type (MIT). Defines usage and distribution rights.",
+      "Sampo_MCP_author": "Author information object with name, email, and URL. Contact information for project maintainer.",
+      "Sampo_MCP_repository": "Repository information object. Git repository URL and metadata.",
+      "Sampo_MCP_dependencies": "Installed npm dependencies object. Maps package names to version ranges.",
+      "Sampo_MCP_engines": "Required Node.js and npm versions object. Defines minimum engine versions."
+    },
+    "http_config": {
+      "Sampo_MCP_http": "HTTP API base URL. Used when HTTP API is enabled for REST endpoints.",
+      "Sampo_MCP_port": "HTTP API port number. Port where HTTP server listens when enabled.",
+      "Sampo_MCP_enableHttp": "Boolean indicating if HTTP API is enabled. When false, only stdio MCP protocol is active.",
+      "Sampo_MCP_protocolVersion": "MCP protocol version string. Defines which protocol features are supported."
+    }
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.20.0",
+    "dotenv": "^17.2.3",
+    "express": "^5.1.0",
+    "net": "^1.0.2",
+    "node-fetch": "^3.3.2",
+    "os": "^0.1.2",
+    "yaml": "^2.8.1",
+    "zod": "^3.25.76",
+    "zod-to-json-schema": "^3.24.6"
+  }
+}
