@@ -1,6 +1,6 @@
 # Note:
 
-At its current state, Sampo-MCP is developed with Claude AI and using it with other AI applications still requires a bit of tweaking
+At its current state, Sampo-MCP is developed for and with Claude AI/Claude Desktop so using it with other AI applications still requires a bit of tweaking
 
 
 # Take Sampo-MCP in use:
