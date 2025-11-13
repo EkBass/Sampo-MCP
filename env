@@ -1,0 +1,30 @@
+# MAke this hidden by adding "." in front of the name
+# Claude AI Client
+API_KEY_CLAUDE_HASH=<hash here>
+API_KEY_CLAUDE_NAME=Claude AI
+
+# Admin User
+API_KEY_ADMIN_HASH=<hash here>
+API_KEY_ADMIN_NAME=Admin-User
+
+# === How to Add New Keys ===
+# 1. Generate a unique key string (e.g., sk_ai_newclient_randomstring)
+# 2. Run: node generate_api_key.js sk_ai_newclient_randomstring
+# 3. Add to .env:
+#    API_KEY_NEWCLIENT_HASH=<hash_from_step_2>
+#    API_KEY_NEWCLIENT_NAME=New Client Name
+# 4. Restart Sampo-MCP server
+# 5. Client uses plain key in Authorization header: Bearer sk_ai_newclient_randomstring
+
+# === Server Configuration ===
+PORT=3000
+HOST=localhost
+
+# === Logging ===
+LOG_LEVEL=info
+
+# === Notes ===
+# - Sampo only reads and validates keys, it never modifies .env
+# - To revoke a key: remove or comment out its hash lines
+# - To rotate a key: generate new hash, update .env, restart server
+# - Key names (API_KEY_*_NAME) are used in log entries to identify clients
