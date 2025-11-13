@@ -1,0 +1,1 @@
+This HTML UI is made so that the user can also test Sampo's features and functionality.
