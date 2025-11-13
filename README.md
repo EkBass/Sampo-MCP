@@ -1,4 +1,9 @@
-# Sampo-MCP in use:
+# Note:
+
+At its current state, Sampo-MCP is developed with Claude AI and using it with other AI applications still requires a bit of tweaking
+
+
+# Take Sampo-MCP in use:
 
 1. Set proper path to your Sampo-MCP root at package.json ->  "installRoot": "D:\\Sampo-MCP",
 2. Rename "env" as ".env"
@@ -11,9 +16,7 @@
 
 ## Introduction
 
-Sampo-MCP emerged from hands-on exploration of the Model Context Protocol (MCP) and experimentation with various Claude-compatible tools. After working with existing solutions, I decided to build something tailored to my own workflow and philosophy: **a workspace on your computer that AI can interact with naturally and powerfully.**
-
-The core idea is simple but flexible - rather than being just another collection of tools, Sampo-MCP creates a dedicated workspace environment where AI assistants can manage files, analyze code, handle network operations, and interact with your development projects in a cohesive way.
+Sampo-MCP emerged from hands-on exploration of the Model Context Protocol (MCP) and experimentation with various Claude-compatible tools. After playing around with existing solutions, I decided to build something tailored to my own workflow and philosophy: workspace on your computer that AI can interact with naturally and powerfully.
 
 ## Current State
 
@@ -23,7 +26,6 @@ This project is actively evolving and somewhat "self-discovering" - the architec
 - **65+ specialized tools** across 8 categories (blocks, files, editing, network, system, npm, search, environment)
 - **Block-based code editing** using named markers for precise, refactoring-resistant modifications
 - **Dual operation modes**: restricted production mode and unrestricted development mode
-- **OAuth-style API authentication** supporting multiple AI clients (Claude, Gemini, OpenAI)
 - **Dynamic HTML GUI** for human interaction alongside AI access
 - **Comprehensive system introspection** - CPU, RAM, disk, network, GPU info
 - **Built for Windows**, with Linux compatibility as a testing priority
