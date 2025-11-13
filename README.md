@@ -5,11 +5,12 @@ At its current state, Sampo-MCP is developed for and with Claude AI/Claude Deskt
 
 # Take Sampo-MCP in use:
 
-1. Set proper path to your Sampo-MCP root at package.json ->  *"installRoot": "D:\\Sampo-MCP",*
-2. Rename *"env"* as *".env"*
-3. Adjust *"devMode"* true/false depending if you want AI to access Sampo source.
-4. *npm install*
-5. Read *"\Sampo-docs\Tool-docs"* and *"\Sampo-docs\Dev-docs"*
+1. Read *https://support.claude.com/en/articles/10949351-getting-started-with-local-mcp-servers-on-claude-desktop*
+2. Set proper path to your Sampo-MCP root at package.json ->  *"installRoot": "D:\\Sampo-MCP",*
+3. Rename *"env"* as *".env"*
+4. Adjust *"devMode"* true/false depending if you want AI to access Sampo source.
+5. *npm install*
+6. Read *"\Sampo-docs\Tool-docs"* and *"\Sampo-docs\Dev-docs"*
 
 # Sampo-MCP about
 
