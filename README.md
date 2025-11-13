@@ -5,18 +5,21 @@ At its current state, Sampo-MCP is developed with Claude AI and using it with ot
 
 # Take Sampo-MCP in use:
 
-1. Set proper path to your Sampo-MCP root at package.json ->  "installRoot": "D:\\Sampo-MCP",
-2. Rename "env" as ".env"
-3. Adjust "devMode" true/false depending if you want AI to access Sampo source.
-4. Read "\Sampo-docs\Tool-docs" and "\Sampo-docs\Dev-docs"
+1. Set proper path to your Sampo-MCP root at package.json ->  *"installRoot": "D:\\Sampo-MCP",*
+2. Rename *"env"* as *".env"*
+3. Adjust *"devMode"* true/false depending if you want AI to access Sampo source.
+4. *npm install*
+5. Read *"\Sampo-docs\Tool-docs"* and *"\Sampo-docs\Dev-docs"*
 
 # Sampo-MCP about
-
-**A comprehensive workspace-centric MCP server for AI assistants**
 
 ## Introduction
 
 Sampo-MCP emerged from hands-on exploration of the Model Context Protocol (MCP) and experimentation with various Claude-compatible tools. After playing around with existing solutions, I decided to build something tailored to my own workflow and philosophy: workspace on your computer that AI can interact with naturally and powerfully.
+
+Although I have been programming since the ancient BASIC home computers and completed a professional degree in software development in 2013, coding has remained just a hobby and curiosity.
+
+I am a behind of development in many things, but I don't let it get in the way.
 
 ## Current State
 
