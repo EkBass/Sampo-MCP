@@ -4,18 +4,18 @@
   "name": "Sampo-MCP",
   "description": "Let AI access to local filesystem, hardware, software, network and much more.",
   "version": "0.5.0",
-  "homepage": "https://github.com/EkBass/Sampo-MCP-source",
+  "homepage": "https://github.com/EkBass/Sampo-MCP",
   "license": "MIT",
   "main": "restart-wrapper.js",
   "packageManager": "npm@10.8.2",
   "author": {
     "name": "Kristian Virtanen",
-    "url": "https://github.com/EkBass/Sampo-MCP-source",
+    "url": "https://github.com/EkBass/Sampo-MCP",
     "email": "krisu.virtanen@gmail.com"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/EkBass/Sampo-MCP-source",
+    "url": "https://github.com/EkBass/Sampo-MCP",
     "participate": "Absolutely. Help from Linux and macOS users in particular would be a great, great, super great thing."
   },
   "engines": {
