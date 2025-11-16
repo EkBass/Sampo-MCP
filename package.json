@@ -1,5 +1,5 @@
 {
-  "private": true,
+  "private": false,
   "type": "module",
   "name": "Sampo-MCP",
   "description": "Let AI access to local filesystem, hardware, software, network and much more.",
